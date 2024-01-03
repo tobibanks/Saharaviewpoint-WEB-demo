@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "saharaviewpoint.WEB": {
+    "saharaviewpoint-web": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/saharaviewpoint.web",
+            "outputPath": "dist/saharaviewpoint-web",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -92,24 +92,22 @@
                   "with": "src/environments/environment.staging.ts"
                 }
               ],
-              "buildOptimizer": true,
-              "optimization": true,
-              "vendorChunk": true,
-              "extractLicenses": true,
-              "sourceMap": false,
-              "namedChunks": true
+              "outputHashing": "all"
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "development"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "saharaviewpoint.WEB:build:production"
+              "buildTarget": "saharaviewpoint-web:build:production"
+            },
+            "staging": {
+              "buildTarget": "saharaviewpoint-web:build:staging"
             },
             "development": {
-              "buildTarget": "saharaviewpoint.WEB:build:development"
+              "buildTarget": "saharaviewpoint-web:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -117,7 +115,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "saharaviewpoint.WEB:build"
+            "buildTarget": "saharaviewpoint-web:build"
           }
         },
         "test": {
