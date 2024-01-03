@@ -30,7 +30,7 @@ jobs:
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
           app_build_command: "npm run build-staging"
           app_location: "/" # App source code path
-          output_location: "dist/staging" # Built app content directory - optional
+          output_location: "dist/staging/browser" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
