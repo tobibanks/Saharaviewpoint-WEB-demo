@@ -1,21 +1,27 @@
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
-import { environment } from './environments/environment.prod';
-import { enableProdMode, importProvidersFrom } from '@angular/core';
+import { environment } from './environments/environment';
 import { AppRoutingModule } from './app/app-routing.module';
+import { provideHttpClient } from '@angular/common/http';
+import { enableProdMode, importProvidersFrom } from '@angular/core';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
-if (environment.production) {
+if (environment.production || environment.staging) {
   enableProdMode()
   //show this warning only on prod mode
   if (window) {
-      selfXSSWarning();
+    selfXSSWarning();
   }
 }
 
 bootstrapApplication(AppComponent, {
-  providers: [importProvidersFrom(BrowserModule, AppRoutingModule)]
-}).catch((err) => console.error(err));
+  providers: [
+    importProvidersFrom(BrowserModule, AppRoutingModule),
+    provideAnimationsAsync(),
+    provideHttpClient()
+  ]
+}).catch((err: any) => console.error(err));
 
 
   function selfXSSWarning() {

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
-import { NgClass, NgIf } from '@angular/common';
+import { NgClass, NgIf } from "@angular/common";
+import { Component, OnInit } from "@angular/core";
+import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { RouterLink, Router } from "@angular/router";
 import { AngularSvgIconModule } from 'angular-svg-icon';
+
 
 @Component({
     selector: 'app-sign-in',

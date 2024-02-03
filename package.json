@@ -1,6 +1,6 @@
 {
   "name": "saharaviewpoint-web",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "engines": {
     "node": ">=20.9.0",
     "npm": ">=8.0.0"
@@ -15,7 +15,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^17.0.0",
+    "@angular/animations": "^17.1.2",
     "@angular/common": "^17.0.0",
     "@angular/compiler": "^17.0.0",
     "@angular/core": "^17.0.0",
@@ -30,6 +30,7 @@
     "apexcharts": "^3.35.3",
     "ng-apexcharts": "^1.7.1",
     "rxjs": "~7.8.0",
+    "sweetalert2": "^11.10.4",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"
   },
