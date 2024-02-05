@@ -1,5 +1,5 @@
 import { FormGroup } from "@angular/forms";
-import { CustomErrorModel } from "../models/utils/CustomErrorModel";
+import { ValidationErrorModel } from "../models/utils/ValidationErrorModel";
 
 export function passwordMatchValidator(controlName: string, matchingControlName: string) {
   return (group: FormGroup) => {
@@ -12,7 +12,7 @@ export function passwordMatchValidator(controlName: string, matchingControlName:
           passwordMatch:  {
             valid: false,
             message: 'Your passwords do not match.'
-        } as CustomErrorModel
+        } as ValidationErrorModel
       });
     } else {
       group.get(matchingControlName)?.setErrors(null);

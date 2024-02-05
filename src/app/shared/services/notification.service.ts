@@ -1,149 +1,173 @@
-import { LoaderService } from '../components/loader/loader.service';
-import { LoaderRef } from '../components/loader/loader-ref';
 import { AlertModel } from '../models/utils/AlertModel';
 import Swal from 'sweetalert2';
 import { Injectable } from '@angular/core';
+import topbar from 'topbar';
+import iziToast, { IziToastSettings } from 'izitoast';
+import { ThemeService } from '../../core/services/theme.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class NotificationService {
-  loader!: LoaderRef;
-  private Toast: any = Swal.mixin({
-    toast: true,
-    position: 'top-end',
-    showConfirmButton: false,
-    timer: 3500,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-      toast.addEventListener('mouseenter', Swal.stopTimer)
-      toast.addEventListener('mouseleave', Swal.resumeTimer)
-    }
-  });
+  private Toast!: any;
   //modalRef!: BsModalRef;
 
-  constructor(
-    private loaderService: LoaderService
-  ) { }
+  constructor(private themeService: ThemeService) {
+    iziToast.settings({
+      theme: this.themeService.isDark ? 'dark' : 'light',
+      layout: 2,
+      position: 'center',
+      timeout: 0,
+      overlay: true,
+      closeOnEscape: true,
+    });
+  }
 
   async showLoader() {
-    if (this.loader) {
-      this.loader.close();
-    }
-    this.loader = await this.loaderService.show('');
+    topbar.show();
   }
 
   async hideLoader() {
-    if (this.loader) {
-      await this.loaderService.close(this.loader);
-    }
+    topbar.hide();
   }
 
-  showMessage(message?: string) {
-    alert(message);
-  }
+  // #region Centered Messages
+  showMessage(title?: string, message?: string): void;
+  showMessage(message?: string): void;
   
-  showSuccessMessage(message?: string): Promise<boolean> {
-    return Swal.fire({
-      icon: 'success',
-      text: message,
-    }).then(() => {
-      return true;
-    })
-  }
-
-  async showInfoMessage(title?: string, message?: string): Promise<boolean> {
-    await Swal.fire({
-      icon: 'info',
+  showMessage(title: string = '', message: string = ''): void {
+    iziToast.show({
       title: title,
-      text: message,
-    });
-    return true;
-  }
-
-  showErrorMessage(title?: string, message?: string): Promise<boolean> {
-    return Swal.fire({
-      icon: 'error',
-      title: title,
-      text: message,
-    }).then((result) => {
-      return true;
+      message: message,
     });
   }
 
-  timedSuccessMessage(message?: string) {
-    this.Toast.fire({
-      icon: 'success',
-      title: message
-    })
+  successMessage(message?: string): void;
+  successMessage(title?: string, message?: string): void;
+
+  successMessage(title: string = '', message: string = ''): void {
+  iziToast.success({
+      title: title,
+      message: message,
+      color: this.themeService.isDark ? 'rgb(0 151 37)' : 'rgba(166, 239, 184, .9)'
+    });
   }
 
-  timedErrorMessage(message?: string) {
-    this.Toast.fire({
-      icon: 'error',
-      title: message
-    })
+  infoMessage(title?: string, message?: string): void;
+  infoMessage(message?: string): void;
+
+  infoMessage(title: string = '', message: string = ''): void {
+    iziToast.info({
+      title: title,
+      message: message,
+      color: this.themeService.isDark ? 'rgb(1 109 164)' : 'rgba(157, 222, 255, .9)'
+    });
   }
 
-  timedInfoMessage(message?: string) {
-    this.Toast.fire({
-      icon: 'info',
-      title: message
-    })
+  errorMessage(title?: string, message?: string): void;
+  errorMessage(message?: string): void;
+
+  errorMessage(title: string = '', message: string = ''): void {
+    iziToast.error({
+      title: title,
+      message: message,
+      color: this.themeService.isDark ? 'rgb(185 40 50)' : 'rgba(255, 175, 180, .9)'
+    });
   }
+  // #endregion
+
+  // #region Timed Messages
+  timedMessage(title?: string, message?: string): void;
+  timedMessage(message?: string): void;
+  
+  timedMessage(title: string = '', message: string = ''): void {
+    iziToast.show({
+      title: title,
+      message: message,
+      position: 'topRight',
+      timeout: 5000,
+      overlay: false,
+      closeOnEscape: true,
+    });
+  }
+
+  timedSuccessMessage(message?: string): void;
+  timedSuccessMessage(title?: string, message?: string): void;
+
+  timedSuccessMessage(title: string = '', message: string = ''): void {
+  iziToast.success({
+      title: title,
+      message: message,
+      position: 'topRight',
+      timeout: 5000,
+      overlay: false,
+      closeOnEscape: true,
+      color: this.themeService.isDark ? 'rgb(0 151 37)' : 'rgba(166, 239, 184, .9)'
+    });
+  }
+
+  timedInfoMessage(title?: string, message?: string): void;
+  timedInfoMessage(message?: string): void;
+
+  timedInfoMessage(title: string = '', message: string = ''): void {
+    iziToast.info({
+      title: title,
+      message: message,
+      position: 'topRight',
+      timeout: 5000,
+      overlay: false,
+      closeOnEscape: true,
+      color: this.themeService.isDark ? 'rgb(1 109 164)' : 'rgba(157, 222, 255, .9)'
+    });
+  }
+
+  timedErrorMessage(title?: string, message?: string): void;
+  timedErrorMessage(message?: string): void;
+
+  timedErrorMessage(title: string = '', message: string = ''): void {
+    iziToast.error({
+      title: title,
+      message: message,
+      position: 'topRight',
+      timeout: 5000,
+      overlay: false,
+      closeOnEscape: true,
+      color: this.themeService.isDark ? 'rgb(185 40 50)' : 'rgba(255, 175, 180, .9)'
+    });
+  }
+  // #endregion
 
   async confirmDelete(): Promise<boolean> {
-    return Swal.fire({
-      // title: '',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#4976ba',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!',
-      width: 500,
-      padding: '0 0 1.25em',
-    }).then((result) => {
-      return result.isConfirmed;
-    });
+    return await this.confirmAction("You won't be able to revert this!", "Confirm Delete?");
   }
 
-  async confirmAction(message: string): Promise<boolean> {
-    return Swal.fire({
-      // title: 'Are you sure?',
-      text: message,
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#4976ba',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes!'
-    }).then((result) => {
-      return result.isConfirmed;
-    })
-  }
-
-  async confirmRemarkedAction(title: string, message: string): Promise<any> {
-    return Swal.fire({
-      title: title,
-      text: message,
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#4976ba',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Continue',
-      input: 'textarea',
-      inputAttributes: {
-        autocapitalize: 'off',
-        required: 'true'
-      }
-    }).then((result) => {
-      let alertResponse: AlertModel = {
-        isConfirmed: result.isConfirmed,
-        isDismissed: result.isDismissed,
-        isDenied: result.isDenied,
-        remark: result.value
+  async confirmAction(message: string, title: string = ''): Promise<boolean> {
+    return new Promise<boolean>((resolve) => {
+      const options: IziToastSettings = {
+        title: title,
+        message: message,
+        position: 'center',
+        layout: 1,
+        overlay: true,
+        timeout: 0,
+        close: false,
+        progressBar: false,
+        color: this.themeService.isDark ? 'rgb(135 124 0)' : 'rgba(255, 249, 178, .9)',
+        buttons: [
+          ['<button><b>Yes</b></button>', function (instance, toast) {
+              console.log('YES')
+              instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+              resolve(true);
+          }, true],
+          ['<button>No</button>', function (instance, toast) {
+            console.log('NO')
+              instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+              resolve(false);
+          }, false],
+      ],
       };
-      return alertResponse;
-    })
+
+      iziToast.question(options);
+    });
   }
 }

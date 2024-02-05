@@ -3,9 +3,12 @@ import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
 import { environment } from './environments/environment';
 import { AppRoutingModule } from './app/app-routing.module';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { enableProdMode, importProvidersFrom } from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { baseUrlInterceptor } from './app/shared/interceptors/base-url.inteceptor';
+import { authInterceptor } from './app/shared/interceptors/auth.interceptor';
+import { loaderAndErrorHandlerInterceptor } from './app/shared/interceptors/loader-and-error-handler.interceptor';
 
 if (environment.production || environment.staging) {
   enableProdMode()
@@ -19,7 +22,9 @@ bootstrapApplication(AppComponent, {
   providers: [
     importProvidersFrom(BrowserModule, AppRoutingModule),
     provideAnimationsAsync(),
-    provideHttpClient()
+    provideHttpClient(
+      withInterceptors([baseUrlInterceptor, authInterceptor, loaderAndErrorHandlerInterceptor])
+    )
   ]
 }).catch((err: any) => console.error(err));
 

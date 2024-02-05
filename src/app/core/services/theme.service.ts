@@ -1,4 +1,5 @@
 import { Injectable, signal } from '@angular/core';
+import { LocalStorageUtility } from '../../shared/utilities/local-storage.utility';
 @Injectable({
   providedIn: 'root',
 })
@@ -6,14 +7,14 @@ export class ThemeService {
   public default = 'light';
   public themeChanged = signal(this.theme);
 
-  constructor() {}
+  constructor(private localStorage: LocalStorageUtility) {}
 
   public get theme(): string {
-    return localStorage.getItem('theme') ?? this.default;
+    return this.localStorage.get('theme') ?? this.default;
   }
 
   public set theme(value: string) {
-    localStorage.setItem('theme', value);
+    this.localStorage.set('theme', value);
     this.themeChanged.set(value);
   }
 

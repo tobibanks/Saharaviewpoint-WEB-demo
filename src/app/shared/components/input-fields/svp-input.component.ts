@@ -9,7 +9,7 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
   imports: [CommonModule, ReactiveFormsModule, AngularSvgIconModule, FormsModule],
   template: `
     <div class="relative mt-3" [formGroup]="svpForm">
-      <input type="{{svpType}}" id={{svpId}} formControlName="{{svpId}}" class="peer block" placeholder=" " autocomplete="{{svpAutoComplete}}" (change)="valueChanged.emit(svpForm.get(svpId)?.value)" (keyup)="keyUp.emit(svpForm.get(svpId)?.value)" />
+      <input type="{{svpType}}" id={{svpId}} formControlName="{{svpId}}" class="peer block dark:text-white" placeholder=" " autocomplete="{{svpAutoComplete}}" (change)="valueChanged.emit(svpForm.get(svpId)?.value)" (keyup)="keyUp.emit(svpForm.get(svpId)?.value)" />
       <label
         for="{{svpId}}"
         class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-white px-2 text-sm text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary-500 dark:bg-night-700 dark:text-night-200">
