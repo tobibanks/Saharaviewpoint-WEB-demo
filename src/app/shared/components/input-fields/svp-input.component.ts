@@ -29,8 +29,8 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
   `
 })
 export class SvpInputComponent {
-  originalType!: 'text' | 'password' | 'email';
-  @Input({required: true}) svpType!: 'text' | 'password' | 'email';
+  originalType!: 'text' | 'number' | 'password' | 'email';
+  @Input({required: true}) svpType!: 'text' | 'number' | 'password' | 'email';
   @Input({required: true}) svpId: string = '';
   @Input({required: true}) svpLabel: string = '';
   @Input() svpAutoComplete: 'on' | 'off' = 'on';

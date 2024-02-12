@@ -1,0 +1,44 @@
+<div class="mx-auto px-4 py-4 sm:px-8 lg:container">
+
+  <form>
+    <div class="space-y-3 text-left">
+      <div>
+        <svp-input svpType="text" svpId="title" [svpForm]="projectForm" svpLabel="Project Title" />
+        <svp-validation-errors [svpControl]="projectForm.get('title')" />
+      </div>
+      
+      <div>
+        <svp-textarea svpType="text" svpId="description" [svpForm]="projectForm" svpLabel="Description" ></svp-textarea>
+        <svp-validation-errors [svpControl]="projectForm.get('description')" />
+      </div>
+      
+      <div>
+        <svp-input svpType="text" svpId="location" [svpForm]="projectForm" svpLabel="Location" />
+        <svp-validation-errors [svpControl]="projectForm.get('location')" />
+      </div>
+      
+      <div>
+        <svp-input svpType="number" svpId="budget" [svpForm]="projectForm" svpLabel="Budget" />
+        <svp-validation-errors [svpControl]="projectForm.get('budget')" />
+      </div>
+      
+      <div>
+        <svp-input svpType="text" svpId="surroundingFacilities" [svpForm]="projectForm" svpLabel="Budget" />
+        <svp-validation-errors [svpControl]="projectForm.get('surroundingFacilities')" />
+      </div>
+
+      
+    </div>
+  </form>
+
+</div>  
+
+<!-- 
+Title
+Location
+description
+project type
+project design and documentations
+project budget
+facilities surrounding the building
+-->

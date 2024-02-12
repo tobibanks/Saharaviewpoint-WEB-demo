@@ -1,0 +1,44 @@
+<div class="mx-auto px-4 py-4 sm:px-8 lg:container">
+  
+  <div class="flex space-x-8 my-4">
+    <div svp-card-selector>
+      <div class="rounded-full p-2 bg-[#800080]"></div>
+      <span>Active Projects</span>
+    </div>    
+  </div>
+  
+  <div class="flex space-x-8 my-4">
+    <div svp-card-selector isActive="true">
+      <svg-icon src="assets/icons/appicons/hamburger-menu.svg" [svgClass]="'h-4 w-4 dark:text-white'" />
+      <span>All Projects</span>
+    </div>
+
+    <div svp-card-selector>
+      <div class="rounded-full p-2 bg-[#800080]"></div>
+      <span>Active Projects</span>
+    </div>
+
+    <div svp-card-selector>
+      <div class="rounded-full p-2 bg-green-600"></div>
+      <span>Completed Projects</span>
+    </div>
+  </div>
+
+  <!-- Second Div with Large Container -->
+  <div class="mt-6 bg-white min-h-80 py-8 px-4 rounded-xl ">
+    <div class="flex flex-col space-y-4 items-center justify-center">
+      <svg-icon src="assets/icons/appicons/empty-project.svg" [svgClass]="'h-64 w-64'"/>
+      
+      <h1 svp-subHeader>
+        No Projects yet.
+      </h1>
+
+      <p svp-text>
+        Click here to start a project
+      </p>  
+
+      <button svp-neutral type="button">Add new project</button>
+    </div>
+  </div>
+  
+</div> 

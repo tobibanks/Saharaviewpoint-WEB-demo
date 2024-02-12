@@ -24,17 +24,17 @@
     <svp-checkbox svpLabel="Remember Me" svpId="rememberMe" [svpForm]="loginForm" />
 
     <div class="text-sm">
-      <svp-anchor svpRoute="/auth/forgot-password" svpText="Forgot your password?" />
+      <a svp-anchor svpRoute="/auth/forgot-password" >Forgot your password?" </a>
     </div>
   </div>
 
   <!-- Submit Button -->
   <div>
-    <svp-btn-primary text="Sign up" isFullWidth class="mt-10 mb-10" (click)="login()" />
+    <button svp-primary isFullWidth class="mt-10 mb-10" (click)="login()">Sign in</button>
   </div>
 
   <!-- Sign-up -->
   <div class="text-sm text-gray-400 dark:text-night-200">
-      Not a Member yet? <svp-anchor svpRoute="/auth/sign-up" svpText="Sign up" />
+      Not a Member yet? <a svp-anchor svpRoute="/auth/sign-up" >Sign up</a>
   </div>
 </form>

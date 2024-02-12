@@ -64,17 +64,17 @@
     <div class="flex items-center mb-2">
       <input id="accept-term" formControlName="acceptTerms" type="checkbox" />
       <label for="accept-term" class="ml-2 block text-sm text-gray-400 dark:text-night-200">
-        I Accept the <svp-anchor svpRoute="" svpText="Terms" />
+        I Accept the <a svp-anchor svpRoute="">Terms </a>
       </label>
     </div>
   </div>
   <svp-validation-errors [svpControl]="registerForm.get('acceptTerms')" />
 
   <!-- Submit Button -->
-  <svp-btn-primary text="Sign up" isFullWidth class="mt-5 mb-10" (click)="signUp()" />
+  <button svp-primary isFullWidth class="mt-5 mb-10" (click)="signUp()">Sign up</button>
 
   <!-- Sign-up -->
   <div class="text-sm text-gray-400 dark:text-night-200">
-    Already have an Account? <svp-anchor svpRoute="/auth/sign-in" svpText="Sign in" />
+    Already have an Account? <a svp-anchor svpRoute="/auth/sign-in">Sign in</a>
   </div>
 </form>

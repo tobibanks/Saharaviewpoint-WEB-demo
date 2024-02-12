@@ -2,10 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { SvpPrimaryButtonComponent } from '../../../../shared/components/buttons/btn-primary.component';
-import { SvpInputComponent } from '../../../../shared/components/input-fields/svp-input.component';
-import { SvpAnchorComponent } from '../../../../shared/components/utilities/svp-anchor.component';
-import { SvpValidationErrorsComponent } from '../../../../shared/components/input-fields/svp-validation-errors.component';
 import { NgClass } from '@angular/common';
 import { passwordMatchValidator } from '../../../../shared/validators/PasswordMatchValidator';
 import { AuthService } from '../../../../shared/services/auth.service';
@@ -13,6 +9,9 @@ import { Result } from '../../../../shared/models/api-response-models/Result';
 import { NotificationService } from '../../../../shared/services/notification.service';
 import { ClientRegisterModel } from '../../../../shared/models/api-input-models/client.register.model';
 import { AuthDataModel } from '../../../../shared/models/api-response-models/auth-data.model';
+import { SvpUtilityModule } from '../../../../shared/components/utilities/utility.module';
+import { SvpButtonModule } from '../../../../shared/components/buttons/btn.module';
+import { SvpFormInputModule } from '../../../../shared/components/input-fields/form-input.module';
 
 @Component({
     selector: 'app-sign-up',
@@ -24,11 +23,10 @@ import { AuthDataModel } from '../../../../shared/models/api-response-models/aut
         RouterLink,
         NgClass,
         AngularSvgIconModule,
-        SvpPrimaryButtonComponent,
-        SvpInputComponent,
-        SvpAnchorComponent,
-        SvpValidationErrorsComponent,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        SvpUtilityModule,
+        SvpButtonModule,
+        SvpFormInputModule
     ],
 })
 export class SignUpComponent implements OnInit {
@@ -64,11 +62,11 @@ export class SignUpComponent implements OnInit {
 
   initForm(): void {
     this.registerForm = this.fb.group({
-      firstName: ['John', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(20)])],
-      lastName: ['Doe', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(20)])],
-      email: ['john@doe.com', Validators.compose([Validators.required, Validators.email])],
-      password: ['Password12#$', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]],
-      confirmPassword: ['Password12#$', Validators.compose([Validators.required])],
+      firstName: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(20)])],
+      lastName: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(20)])],
+      email: ['', Validators.compose([Validators.required, Validators.email])],
+      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]],
+      confirmPassword: ['', Validators.compose([Validators.required])],
       acceptTerms: [false, Validators.requiredTrue]
     }, {
       validators: passwordMatchValidator('password', 'confirmPassword')
@@ -89,7 +87,7 @@ export class SignUpComponent implements OnInit {
         if (res.success) {
           this.notify.timedSuccessMessage('Sign up successful.');
 
-          this.authService.maskUserAsAuthenticated(res.content as AuthDataModel);
+          this.authService.maskUserAsAuthenticated(res.content as AuthDataModel, true);
           this.router.navigate(['dashboard']);
         } else {
           this.notify.errorMessage(res.title, res.message);

@@ -86,7 +86,7 @@ export class AuthService {
     return this.http.post<Result<any>>(`auth/${userReference}/logout`, null);
   }
 
-  maskUserAsAuthenticated(authData: AuthDataModel, rememberMe: boolean = false) {
+  maskUserAsAuthenticated(authData: AuthDataModel, rememberMe: boolean) {
     this.storageService.storeToken(authData.token, rememberMe);
     this.storageService.storeUser(authData.user, rememberMe);
     this.storageService.storeRefreshToken(authData.refreshToken, rememberMe);

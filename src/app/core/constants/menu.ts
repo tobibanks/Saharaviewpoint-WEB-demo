@@ -11,6 +11,15 @@ export class Menu {
           label: 'Dashboard',
           route: '/dashboard'
         },
+        {
+          icon: 'assets/icons/heroicons/outline/chart-pie.svg',
+          label: 'Projects',
+          route: '/project',
+          children: [
+            { label: 'Create New Project', route: '/project/new' }
+          ]
+        },
+
         // {
         //   icon: 'assets/icons/heroicons/outline/lock-closed.svg',
         //   label: 'Auth',
