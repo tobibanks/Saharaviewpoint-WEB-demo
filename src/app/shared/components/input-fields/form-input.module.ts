@@ -1,21 +1,22 @@
 import { NgModule } from "@angular/core";
 import { SvpCheckboxComponent } from "./svp-checkbox.component";
-import { SvpInputComponent } from "./svp-input.component";
 import { SvpValidationErrorsComponent } from "./svp-validation-errors.component";
-import { SvpTextAreaComponent } from "./svp-textarea.component";
+import { SvpLabelComponent } from "./svp-label.component";
 
 @NgModule({
   imports: [
     SvpCheckboxComponent,
-    SvpInputComponent,
     SvpValidationErrorsComponent,
-    SvpTextAreaComponent
+    SvpLabelComponent,
+    // SvpInputComponent,
+    // SvpTextAreaComponent
   ],
   exports: [
     SvpCheckboxComponent,
-    SvpInputComponent,
     SvpValidationErrorsComponent,
-    SvpTextAreaComponent
+    SvpLabelComponent,
+    // SvpInputComponent,
+    // SvpTextAreaComponent
   ]
 })
 export class SvpFormInputModule {}

@@ -11,6 +11,7 @@ import { NotificationService } from "../../../../shared/services/notification.se
 import { SvpButtonModule } from "../../../../shared/components/buttons/btn.module";
 import { SvpUtilityModule } from "../../../../shared/components/utilities/utility.module";
 import { SvpFormInputModule } from "../../../../shared/components/input-fields/form-input.module";
+import { SvpAuthInputComponent } from "../../components/auth-input.component";
 
 
 @Component({
@@ -27,7 +28,8 @@ import { SvpFormInputModule } from "../../../../shared/components/input-fields/f
         NgIf,
         SvpButtonModule,
         SvpUtilityModule,
-        SvpFormInputModule
+        SvpFormInputModule,
+        SvpAuthInputComponent
     ],
 })
 export class SignInComponent implements OnInit {

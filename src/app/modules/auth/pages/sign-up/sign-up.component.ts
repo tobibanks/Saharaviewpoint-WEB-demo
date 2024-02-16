@@ -12,6 +12,7 @@ import { AuthDataModel } from '../../../../shared/models/api-response-models/aut
 import { SvpUtilityModule } from '../../../../shared/components/utilities/utility.module';
 import { SvpButtonModule } from '../../../../shared/components/buttons/btn.module';
 import { SvpFormInputModule } from '../../../../shared/components/input-fields/form-input.module';
+import { SvpAuthInputComponent } from '../../components/auth-input.component';
 
 @Component({
     selector: 'app-sign-up',
@@ -26,7 +27,8 @@ import { SvpFormInputModule } from '../../../../shared/components/input-fields/f
         ReactiveFormsModule,
         SvpUtilityModule,
         SvpButtonModule,
-        SvpFormInputModule
+        SvpFormInputModule,
+        SvpAuthInputComponent
     ],
 })
 export class SignUpComponent implements OnInit {
@@ -48,6 +50,8 @@ export class SignUpComponent implements OnInit {
     }
 
   ngOnInit(): void {    
+    this.initForm();
+
     if (history.state.clearToken) {
       this.authService.maskUserAsLoggedOut();
     }
@@ -56,8 +60,6 @@ export class SignUpComponent implements OnInit {
     if (this.authService.IsAuthenticated()) {
       this.router.navigateByUrl(this.returnUrl);
     }
-    
-    this.initForm();
   }
 
   initForm(): void {

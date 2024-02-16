@@ -9,12 +9,12 @@
 
   <div class="space-y-3 text-left">
     <div>
-      <svp-input svpType="email" svpId="email" [svpForm]="loginForm" svpLabel="Email Address" />
+      <auth-input svpType="email" svpId="email" [svpForm]="loginForm" svpLabel="Email Address" />
       <svp-validation-errors [svpControl]="loginForm.get('email')" />
     </div>
 
     <div>
-      <svp-input svpType="password" svpId="password" [svpForm]="loginForm" svpLabel="Password" />
+      <auth-input svpType="password" svpId="password" [svpForm]="loginForm" svpLabel="Password" />
       <svp-validation-errors [svpControl]="loginForm.get('password')" />
     </div>
   </div>

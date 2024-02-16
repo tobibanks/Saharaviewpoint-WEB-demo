@@ -9,18 +9,18 @@
   <div class="space-y-3 text-left">
 
     <div>
-      <svp-input svpType="text" svpId="firstName" [svpForm]="registerForm" svpLabel="First Name" />
+      <auth-input svpType="text" svpId="firstName" [svpForm]="registerForm" svpLabel="First Name" />
       <svp-validation-errors [svpControl]="registerForm.get('firstName')" />
     </div>
 
-    <svp-input svpType="text" svpId="lastName" [svpForm]="registerForm" svpLabel="Last Name" />
+    <auth-input svpType="text" svpId="lastName" [svpForm]="registerForm" svpLabel="Last Name" />
 
     <div>
-      <svp-input svpType="email" svpId="email" [svpForm]="registerForm" svpLabel="Email Address" svpAutoComplete="off" />
+      <auth-input svpType="email" svpId="email" [svpForm]="registerForm" svpLabel="Email Address" svpAutoComplete="off" />
       <svp-validation-errors [svpControl]="registerForm.get('email')" />
     </div>
 
-    <svp-input svpType="password" [svpForm]="registerForm" svpId="password" svpLabel="Password" (keyUp)="calculatePasswordStrength($event)" />
+    <auth-input svpType="password" [svpForm]="registerForm" svpId="password" svpLabel="Password" (keyUp)="calculatePasswordStrength($event)" />
     <!-- Password Meeter -->
     <div class="grid grid-cols-4 gap-2">
       <div class="h-1 rounded-sm"
@@ -55,7 +55,7 @@
     >
 
     <div>
-      <svp-input svpType="password" [svpForm]="registerForm" svpId="confirmPassword" svpLabel="Confirm Password" />
+      <auth-input svpType="password" [svpForm]="registerForm" svpId="confirmPassword" svpLabel="Confirm Password" />
       <svp-validation-errors [svpControl]="registerForm.get('confirmPassword')" />
     </div>
   </div>

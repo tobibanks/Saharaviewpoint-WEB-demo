@@ -4,7 +4,7 @@ import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 
 @Component({
-  selector: 'svp-input',
+  selector: 'auth-input',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, AngularSvgIconModule, FormsModule],
   template: `
@@ -28,7 +28,7 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
     </div>
   `
 })
-export class SvpInputComponent {
+export class SvpAuthInputComponent {
   originalType!: 'text' | 'number' | 'password' | 'email';
   @Input({required: true}) svpType!: 'text' | 'number' | 'password' | 'email';
   @Input({required: true}) svpId: string = '';

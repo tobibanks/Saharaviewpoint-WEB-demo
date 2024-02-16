@@ -1,44 +1,103 @@
-<div class="mx-auto px-4 py-4 sm:px-8 lg:container">
+<div class="mx-auto px-4 py-4 sm:px-8 lg:container bg-white my-10">
 
-  <form>
-    <div class="space-y-3 text-left">
-      <div>
-        <svp-input svpType="text" svpId="title" [svpForm]="projectForm" svpLabel="Project Title" />
+  <form [formGroup]="projectForm">
+    <div class="grid grid-cols-3 gap-6">
+      <div class="space-y-2">
+        <label svp-label for="title">Project Title</label>
+        <input
+          type="text"
+          formControlName="title"          
+          placeholder="Completed Projects"/>
         <svp-validation-errors [svpControl]="projectForm.get('title')" />
       </div>
-      
-      <div>
-        <svp-textarea svpType="text" svpId="description" [svpForm]="projectForm" svpLabel="Description" ></svp-textarea>
-        <svp-validation-errors [svpControl]="projectForm.get('description')" />
-      </div>
-      
-      <div>
-        <svp-input svpType="text" svpId="location" [svpForm]="projectForm" svpLabel="Location" />
-        <svp-validation-errors [svpControl]="projectForm.get('location')" />
-      </div>
-      
-      <div>
-        <svp-input svpType="number" svpId="budget" [svpForm]="projectForm" svpLabel="Budget" />
-        <svp-validation-errors [svpControl]="projectForm.get('budget')" />
-      </div>
-      
-      <div>
-        <svp-input svpType="text" svpId="surroundingFacilities" [svpForm]="projectForm" svpLabel="Budget" />
-        <svp-validation-errors [svpControl]="projectForm.get('surroundingFacilities')" />
+
+      <div class="space-y-2">
+        <label svp-label for="size">Site Size</label>
+        <input
+          type="text"
+          formControlName="size"          
+          placeholder="Site size"/>
+        <svp-validation-errors [svpControl]="projectForm.get('size')" />
       </div>
 
+      <div class="space-y-2">
+        <label svp-label for="dueDate">Due Date</label>
+        <input
+          type="date"
+          formControlName="dueDate"/>
+        <svp-validation-errors [svpControl]="projectForm.get('dueDate')" />
+      </div>
+
+      <div class="space-y-2">
+        <label svp-label for="budget">Budget</label>
+        <input
+          type="number" placeholder="what is the estimated budget of the project"
+          formControlName="budget"/>
+        <svp-validation-errors [svpControl]="projectForm.get('budget')" />
+      </div>
+
+      <div class="space-y-2">
+        <label svp-label for="location">Building Location</label>
+        <input
+          type="text" placeholder="Building Location"
+          formControlName="location"/>
+        <svp-validation-errors [svpControl]="projectForm.get('location')" />
+      </div>
+
+      <div class="space-y-2">
+        <label svp-label for="type">Building Type</label>
+        <input
+          type="text" placeholder="duplex, shopping mall, e.t.c"
+          formControlName="type"/>
+        <svp-validation-errors [svpControl]="projectForm.get('type')" />
+      </div>
+
+      <div class="space-y-2 col-span-2">
+        <label svp-label for="description">Project Information</label>
+        <textarea cols="5" rows="5"
+          type="text" placeholder="Please provide detailed information about your project"
+          formControlName="description"> </textarea>
+        <svp-validation-errors [svpControl]="projectForm.get('description')" />
+      </div>
+
+      <div class="w-full h-full` row-span-2">
+
+        <div class="flex flex-col items-center justify-center w-full">
+          <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+              <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                  <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                  </svg>
+                  <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                  <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+              </div>
+              <input id="dropzone-file" type="file" class="hidden" multiple (change)="handleFileInput($event)"/>
+          </label>
+          
+          <!-- Container to display selected files -->
+        <div class="w-full mt-4">
+          <div class="flex flex-wrap gap-2">
+              <!-- Use ngFor to loop through selected files -->
+              <div *ngFor="let file of selectedFiles" class="flex items-center bg-gray-100 dark:bg-gray-800 p-2 rounded">
+                  <p class="mr-2">{{ file.name }}</p>
+                  <button type="button" class="text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-600" (click)="removeFile(file)">Delete </button>
+              </div>
+          </div>
+        </div>
+        </div>
+      
+        
+      </div>
+
+      <div class="space-y-2 col-span-2">
+        <label svp-label for="surroundingFacilities">Facilities surrounding site and on site</label>
+        <input
+          type="text" placeholder="duplex, shopping mall, e.t.c"
+          formControlName="surroundingFacilities"/>
+        <svp-validation-errors [svpControl]="projectForm.get('surroundingFacilities')" />
+      </div>
       
     </div>
   </form>
 
-</div>  
-
-<!-- 
-Title
-Location
-description
-project type
-project design and documentations
-project budget
-facilities surrounding the building
--->
+</div>
