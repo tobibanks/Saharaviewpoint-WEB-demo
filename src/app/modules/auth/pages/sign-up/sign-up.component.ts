@@ -35,8 +35,7 @@ export class SignUpComponent implements OnInit {
   registerForm!: FormGroup;
   passwordStrength: number = 0;
   
-  returnUrl!: string
-  wasAutoLoggedOut: boolean = false;
+  returnUrl!: string;
 
   registerClient!: ClientRegisterModel;
 
@@ -46,7 +45,6 @@ export class SignUpComponent implements OnInit {
     private router: Router,
     private notify: NotificationService) {
       this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-      this.wasAutoLoggedOut = this.router.getCurrentNavigation()?.extras.state?.['wasAutoLoggedOut'];
     }
 
   ngOnInit(): void {    

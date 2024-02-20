@@ -1,7 +1,7 @@
 import { NgClass, NgIf } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { RouterLink, Router } from "@angular/router";
+import { RouterLink, Router, ActivatedRoute } from "@angular/router";
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { LoginModel } from "../../../../shared/models/api-input-models/login.model";
 import { AuthService } from "../../../../shared/services/auth.service";
@@ -35,14 +35,27 @@ import { SvpAuthInputComponent } from "../../components/auth-input.component";
 export class SignInComponent implements OnInit {
   loginForm!: FormGroup;
   userLogin!: LoginModel;
+  returnUrl!: string;
 
   constructor(private readonly fb: FormBuilder,
+    private route: ActivatedRoute,
     private readonly router: Router,
     private authService: AuthService,
-    private notify: NotificationService) {}
+    private notify: NotificationService) {
+      this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    }
 
   ngOnInit(): void {
     this.initForm();
+
+    if (history.state.clearToken) {
+      this.authService.maskUserAsLoggedOut();
+    }
+
+    // redirect to dashboard if user is still logged in
+    if (this.authService.IsAuthenticated()) {
+      this.router.navigateByUrl(this.returnUrl);
+    }
   }
 
   initForm(): void {

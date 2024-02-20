@@ -4,13 +4,14 @@ import { SvpButtonModule } from '../../../../shared/components/buttons/btn.modul
 import { SvpTypographyModule } from '../../../../shared/components/typography/typography.module';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SvpFormInputModule } from '../../../../shared/components/input-fields/form-input.module';
-import { NgFor } from '@angular/common';
+import { CommonModule, NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-add-project',
   templateUrl: './add-project.component.html',
   standalone: true,
   imports: [
+    CommonModule,
     AngularSvgIconModule, 
     SvpButtonModule, 
     SvpTypographyModule,
