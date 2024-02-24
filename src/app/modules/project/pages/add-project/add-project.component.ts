@@ -5,6 +5,10 @@ import { SvpTypographyModule } from '../../../../shared/components/typography/ty
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SvpFormInputModule } from '../../../../shared/components/input-fields/form-input.module';
 import { CommonModule, NgFor } from '@angular/common';
+import { ProjectService } from '../../../../shared/services/project.service';
+import { ProjectTypeModel } from '../../../../shared/models/api-response-models/project/project-type.model';
+import { Result } from '../../../../shared/models/api-response-models/Result';
+import { NotificationService } from '../../../../shared/services/notification.service';
 
 @Component({
   selector: 'app-add-project',
@@ -22,40 +26,52 @@ import { CommonModule, NgFor } from '@angular/common';
 })
 export class AddProjectComponent implements OnInit { 
   projectForm!: FormGroup;
-  selectedFiles: any[] = [];
+  projectTypes: ProjectTypeModel[] = [];
   
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private projectService: ProjectService,
+    private notify: NotificationService
   ) {}
 
   ngOnInit(): void {
     this.initForm();
+
+    this.getProjectTypes();
   }
 
   initForm(): void {
     this.projectForm = this.fb.group({
-      title: [null, Validators.compose([Validators.required, Validators.minLength(10)])],
-      size: [''],
-      dueDate: [''],
-      location: [''],
-      description: [''],
-      type: [''],
-      budget: [''],
-      surroundingFacilities: [''],
+      title: ['My first project', Validators.compose([Validators.required, Validators.minLength(10)])],
+      size: ['54 x 23 x 12'],
+      dueDate: ['07/05/2024'],
+      location: ['Abuja'],
+      description: ['Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'],
+      type: ['5 Bedroom Duplex'],
+      budget: [40000000],
+      surroundingFacilities: ['Shoprite'],
+      design: []
     });
   }
 
-   // Function to handle file selection
-  handleFileInput(e: any): void {
-
-    let files = e.target.files;
-    if (files == null) return;
-    
-    this.selectedFiles.push(...Array.from(files));
+  getProjectTypes(): void{
+    this.projectService.listTypes().subscribe((res: Result<ProjectTypeModel[]>) => {
+      if (res.success) {
+        this.projectTypes = res.content ?? [];
+        console.table(this.projectTypes);
+      } else {
+        this.notify.errorMessage(res.title, res.message);
+      }
+    });
   }
 
-  // Function to remove a file from the selected files array
-  removeFile(fileToRemove: File): void {
-    this.selectedFiles = this.selectedFiles.filter(file => file !== fileToRemove);
+  submitForm() {
+    // get param
+    let param = Object.assign({}, this.projectForm.value);
+    console.log('--> Params: ', param);
   }
+
+  // filesChanged(files: File[]): void {
+  //   console.log('--> Files changed event received: ', files);
+  // }
 }

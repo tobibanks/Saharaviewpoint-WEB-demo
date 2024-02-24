@@ -6,7 +6,7 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 import { LoginModel } from "../../../../shared/models/api-input-models/login.model";
 import { AuthService } from "../../../../shared/services/auth.service";
 import { Result } from "../../../../shared/models/api-response-models/Result";
-import { AuthDataModel } from "../../../../shared/models/api-response-models/auth-data.model";
+import { AuthDataModel } from "../../../../shared/models/api-response-models/auth/auth-data.model";
 import { NotificationService } from "../../../../shared/services/notification.service";
 import { SvpButtonModule } from "../../../../shared/components/buttons/btn.module";
 import { SvpUtilityModule } from "../../../../shared/components/utilities/utility.module";

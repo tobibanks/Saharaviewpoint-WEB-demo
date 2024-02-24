@@ -9,7 +9,7 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
   template: `
     <div class="flex items-center justify-between space-x-3" [formGroup]="svpForm">
       <div class="flex items-center mb-2">
-        <input id={{svpId}} formControlName="{{svpId}}" type="checkbox" />
+        <input id="{{svpId}}" formControlName="{{svpId}}" type="checkbox" />
         <label for="accept-term" class="ml-2 block text-sm text-gray-400 dark:text-night-200">
           {{svpLabel}}
         </label>

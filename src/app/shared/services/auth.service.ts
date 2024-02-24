@@ -6,7 +6,7 @@ import { Router } from "@angular/router";
 import { NotificationService } from "./notification.service";
 import { StorageService } from "./storage.service";
 import { Result } from "../models/api-response-models/Result";
-import { AuthDataModel } from "../models/api-response-models/auth-data.model";
+import { AuthDataModel } from "../models/api-response-models/auth/auth-data.model";
 import { LoginModel } from "../models/api-input-models/login.model";
 import { AuthRoleData } from "../models/utils/AuthRoleData";
 import { RoleEnum } from "../enums/RoleEnum";
@@ -106,24 +106,5 @@ export class AuthService {
 
     // Check if any of the roles in the provided array is present in userRoles
     return roles.some(role => userRoles[role]);
-
-
-    // if (roles.includes(RoleEnum.SVP_ADMIN) && userRoles.SvpAdmin) {
-    //   return true;
-    // } else if (roles.includes(RoleEnum.SVP_MANAGER) && userRoles.SvpManager) {
-    //   return true;
-    // } else if (roles.includes(RoleEnum.BUSINESS_ADMIN) && userRoles.BusinessAdmin) {
-    //   return true;
-    // } else if (roles.includes(RoleEnum.BUSINESS_MANAGER) && userRoles.BusinessManager) {
-    //   return true;
-    // } else if (roles.includes(RoleEnum.BUSINESS_CLIENT) && userRoles.BusinessClient) {
-    //   return true;
-    // } else if (roles.includes(RoleEnum.CLIENT) && userRoles.Client) {
-    //   return true;
-    // } else if (roles.includes(RoleEnum.SUPER_ADMIN) && userRoles.SuperAdmin) {
-    //   return true;
-    // } else {
-    //   return false;
-    // }
   }
 }
