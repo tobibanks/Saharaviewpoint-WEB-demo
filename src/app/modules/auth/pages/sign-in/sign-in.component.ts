@@ -74,9 +74,11 @@ export class SignInComponent implements OnInit {
 
     this.userLogin = Object.assign({}, this.loginForm.value);
 
+    this.notify.showLoader();
     this.authService.login(this.userLogin)
       .subscribe(async (res: Result<AuthDataModel>) => {
-        console.log('--> Res', res);
+        this.notify.hideLoader();
+        
         if (res.success) {
           this.notify.timedSuccessMessage(`Welcome back ${res.content?.user.firstName}`);
 

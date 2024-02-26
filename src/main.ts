@@ -8,7 +8,7 @@ import { enableProdMode, importProvidersFrom } from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { baseUrlInterceptor } from './app/shared/interceptors/base-url.inteceptor';
 import { authInterceptor } from './app/shared/interceptors/auth.interceptor';
-import { loaderAndErrorHandlerInterceptor } from './app/shared/interceptors/loader-and-error-handler.interceptor';
+import { errorHandlerInterceptor } from './app/shared/interceptors/error-handler.interceptor';
 
 if (environment.production || environment.staging) {
   enableProdMode()
@@ -23,7 +23,7 @@ bootstrapApplication(AppComponent, {
     importProvidersFrom(BrowserModule, AppRoutingModule),
     provideAnimationsAsync(),
     provideHttpClient(
-      withInterceptors([baseUrlInterceptor, authInterceptor, loaderAndErrorHandlerInterceptor])
+      withInterceptors([baseUrlInterceptor, authInterceptor, errorHandlerInterceptor])
     )
   ]
 }).catch((err: any) => console.error(err));

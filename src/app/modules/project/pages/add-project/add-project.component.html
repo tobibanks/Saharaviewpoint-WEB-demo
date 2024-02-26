@@ -1,11 +1,11 @@
-<div class="mx-auto px-4 py-4 sm:px-8 lg:container bg-white my-10">
+<div class="mx-auto px-4 py-4 sm:px-8 lg:container">
 
   <form [formGroup]="projectForm">
     <div class="grid grid-cols-3 gap-6">
       <div class="space-y-2">
         <label svp-label for="title">Project Title</label>
         <input
-          type="text"
+          type="text" class="svp-input"
           formControlName="title"          
           placeholder="Completed Projects"/>
         <svp-validation-errors [svpControl]="projectForm.get('title')" />
@@ -18,7 +18,7 @@
           formControlName="size"          
           placeholder="Site size"/>
         <svp-validation-errors [svpControl]="projectForm.get('size')" />
-      </div>
+      </div> 
 
       <div class="space-y-2">
         <label svp-label for="dueDate">Due Date</label>
@@ -46,9 +46,23 @@
 
       <div class="space-y-2">
         <label svp-label for="type">Building Type</label>
-        <input
+        <ng-select [items]="projectTypes$ | async"
+          bindLabel="name"
+          bindId="id"
+          [addTag]="true"
+          [multiple]="false"
+          [hideSelected]="true"
+          [trackByFn]="trackByFn"
+          [minTermLength]="2"
+          [loading]="projectTypeLoading"
+          placeholder="Select a type"
+          typeToSearchText="Please enter 2 or more characters"
+          [typeahead]="projectTypeInput$"
+          formControlName="type">
+        </ng-select>
+        <!-- <input
           type="text" placeholder="duplex, shopping mall, e.t.c"
-          formControlName="type"/>
+          formControlName="type"/> -->
         <svp-validation-errors [svpControl]="projectForm.get('type')" />
       </div>
 

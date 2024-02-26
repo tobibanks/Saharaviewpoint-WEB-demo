@@ -1,5 +1,3 @@
-import { AlertModel } from '../models/utils/AlertModel';
-import Swal from 'sweetalert2';
 import { Injectable } from '@angular/core';
 import topbar from 'topbar';
 import iziToast, { IziToastSettings } from 'izitoast';

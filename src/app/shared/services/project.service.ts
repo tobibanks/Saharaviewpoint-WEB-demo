@@ -38,8 +38,8 @@ export class ProjectService {
   // #endregion
 
   // #region TYPES
-  listTypes(): Observable<Result<ProjectTypeModel[]>> {
-    return this.http.get<Result<ProjectTypeModel[]>>(`projects/types`);
+  listTypes(searchTerm: string): Observable<Result<ProjectTypeModel[]>> {
+    return this.http.get<Result<ProjectTypeModel[]>>(`projects/types?searchTerm=${searchTerm}`);
   }
 
   addType(param: any): Observable<Result<ProjectTypeModel>> {

@@ -81,9 +81,11 @@ export class SignUpComponent implements OnInit {
 
     this.registerClient = Object.assign({}, this.registerForm.value);
 
+    this.notify.showLoader();
     this.authService.signUpClient(this.registerClient)
       .subscribe(async (res: Result<AuthDataModel>) => {
-        console.log('--> Res', res);
+        this.notify.hideLoader();
+        
         if (res.success) {
           this.notify.timedSuccessMessage('Sign up successful.');
 
