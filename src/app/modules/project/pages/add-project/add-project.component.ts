@@ -11,6 +11,10 @@ import { Result } from '../../../../shared/models/api-response-models/Result';
 import { NotificationService } from '../../../../shared/services/notification.service';
 import { Observable, Subject, catchError, concat, distinctUntilChanged, map, of, switchMap, tap } from 'rxjs';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { SvpAnchorComponent } from '../../../../shared/components/utilities/svp-anchor.component';
+import { ProjectModel } from '../../../../shared/models/api-response-models/project/project.model';
+import { HttpErrorResponse } from '@angular/common/http';
+import { mapValidationErrors } from '../../../../shared/components/utilities/map-validation-errors.utility';
 
 @Component({
   selector: 'app-add-project',
@@ -19,6 +23,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
   imports: [
     CommonModule,
     AngularSvgIconModule, 
+    SvpAnchorComponent,
     SvpButtonModule, 
     SvpTypographyModule,
     ReactiveFormsModule,
@@ -47,7 +52,7 @@ export class AddProjectComponent implements OnInit {
 
   initForm(): void {
     this.projectForm = this.fb.group({
-      title: ['My first project', Validators.compose([Validators.required, Validators.minLength(10)])],
+      title: ['', Validators.required],
       size: ['54 x 23 x 12'],
       dueDate: ['07/05/2024'],
       location: ['Abuja'],
@@ -58,10 +63,18 @@ export class AddProjectComponent implements OnInit {
       design: []
     });
   }
-
+  
   private loadProjectTypes() {
-    this.projectTypes$ = concat(
-        of([]), // default items
+    this.projectService.listTypes().pipe(
+      switchMap((res: Result<ProjectTypeModel[]>) => {
+        if (!res.success) {
+          this.notify.timedErrorMessage('Unable to retrieve project types', res.message);
+        }
+        return of (res.content ?? []);
+      })
+    ).subscribe((defaultItems: ProjectTypeModel[]) => {
+      this.projectTypes$ = concat(
+        of(defaultItems),
         this.projectTypeInput$.pipe(
             distinctUntilChanged(),
             tap(() => this.projectTypeLoading = true),
@@ -72,13 +85,47 @@ export class AddProjectComponent implements OnInit {
             )),
           map((data: any) => data.content)
         )
-    );
+      );
+    })        
   }
 
   submitForm() {
     // get param
     let param = Object.assign({}, this.projectForm.value);
     console.log('--> Params: ', param);
+
+    let formParam: FormData = new FormData();
+    formParam.append('title', param.title);
+    formParam.append('type', param.type);
+    formParam.append('budget', param.budget);
+    formParam.append('description', param.description);
+    formParam.append('dueDate', param.dueDate);
+    formParam.append('location', param.location);
+    formParam.append('size', param.size);
+    formParam.append('surroundingFacilities', param.surroundingFacilities);
+    formParam.append('design', param.type);
+    
+    this.notify.showLoader();
+    this.projectService.createProject(formParam)
+      .subscribe({
+        next: async (res: Result<ProjectModel>) => {
+          this.notify.hideLoader();
+          if (res.success) {
+            this.notify.successMessage('Saved successfully');
+          } 
+          else {
+            this.notify.errorMessage(res.title, res.message);
+          }
+        },
+        error: async (err: Result<any>) => {
+          // if (err instanceof HttpErrorResponse)
+            // console.log('Own error handler: ', err);
+          // if (err.title)
+          // this.notify.errorMessage('This ', 'Error got here.')
+          mapValidationErrors(this.projectForm, err.validationErrors);
+          this.projectForm.updateValueAndValidity();
+        }
+      })
   }
 
   trackByFn(item: ProjectTypeModel) {

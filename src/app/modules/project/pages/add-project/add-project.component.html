@@ -48,7 +48,7 @@
         <label svp-label for="type">Building Type</label>
         <ng-select [items]="projectTypes$ | async"
           bindLabel="name"
-          bindId="id"
+          bindValue="id"
           [addTag]="true"
           [multiple]="false"
           [hideSelected]="true"
@@ -60,9 +60,6 @@
           [typeahead]="projectTypeInput$"
           formControlName="type">
         </ng-select>
-        <!-- <input
-          type="text" placeholder="duplex, shopping mall, e.t.c"
-          formControlName="type"/> -->
         <svp-validation-errors [svpControl]="projectForm.get('type')" />
       </div>
 

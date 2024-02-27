@@ -11,7 +11,7 @@ export function passwordMatchValidator(controlName: string, matchingControlName:
       group.get(matchingControlName)?.setErrors({ 
           passwordMatch:  {
             valid: false,
-            message: 'Your passwords do not match.'
+            messages: ['Your passwords do not match.']
         } as ValidationErrorModel
       });
     } else {

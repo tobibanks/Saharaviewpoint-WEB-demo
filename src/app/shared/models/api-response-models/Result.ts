@@ -11,6 +11,10 @@ export class Result<T> {
   success?: boolean;
   title?: string;
   type?: number;
-  validationErrors?: any;
+  validationErrors?: { [key: string]: string[] };
   paging?: Paging;
+}
+
+export class ValidationResult {
+
 }

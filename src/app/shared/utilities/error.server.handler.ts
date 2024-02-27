@@ -23,12 +23,19 @@ export class ErrorService {
       if (error instanceof HttpErrorResponse) {
           switch (error.status) {
           case 400: //Bad Request
-            let msg400: Result<any> = new Result();
+            let msg400: Result<any> = new Result();            
             msg400.success = false;
             msg400.title = 'Bad Request';
             msg400.message = error?.error.message ?? 'An error from the server';
             msg400.path = error.url?.toString();
-            this.notify.errorMessage(msg400.title, msg400.message);
+            
+            // only display error pop-up when it is not a validation error
+            if (error.error.title !== 'Validation Errors') {
+              this.notify.errorMessage(msg400.title, msg400.message);
+            }
+            else {
+              msg400.validationErrors = error?.error.validationErrors;
+            }
 
             return throwError(msg400 as Result<any>);
           case 401: //Authentication error
@@ -109,19 +116,5 @@ export class ErrorService {
         return of(msg);
       }
     };
-  }
-
-  public processError(result: Result<any>) {
-    if (result.type === 1) {
-      // validation error
-      let errorMessage = '';
-      for (const error of result.validationErrors) {
-        errorMessage = `${errorMessage} ${error.description}; `;
-      }
-
-      return errorMessage;
-    } else {
-      return result.message;
-    }
   }
 }

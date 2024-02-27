@@ -38,8 +38,9 @@ export class ProjectService {
   // #endregion
 
   // #region TYPES
-  listTypes(searchTerm: string): Observable<Result<ProjectTypeModel[]>> {
-    return this.http.get<Result<ProjectTypeModel[]>>(`projects/types?searchTerm=${searchTerm}`);
+  listTypes(searchTerm?: string): Observable<Result<ProjectTypeModel[]>> {
+    let query = searchTerm ? `?searchTerm=${searchTerm}` : '';
+    return this.http.get<Result<ProjectTypeModel[]>>(`projects/types${query}`);
   }
 
   addType(param: any): Observable<Result<ProjectTypeModel>> {

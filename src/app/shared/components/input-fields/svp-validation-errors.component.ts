@@ -42,8 +42,13 @@ export class SvpValidationErrorsComponent {
           break;
         default:
           const error = this.svpControl.errors?.[key];
-          if('valid' in error && 'message' in error) {
-            errors.push(error.message);
+          if (key == 'Title' || key == 'title') {
+            console.log('--> Handler Key', key);
+            console.log('--> Handler Errors: ', error);
+          }
+          
+          if('valid' in error && 'messages' in error) {
+            errors.push(...error.messages);
           } else {
             errors.push('A validation error has occurred.');
           }
