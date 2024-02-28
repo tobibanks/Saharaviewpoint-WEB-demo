@@ -18,6 +18,8 @@ export class ErrorService {
 
   public handleError<T>() {
     return (error: any): Observable<any> => {
+      console.log('--> Error: ', error);
+      
       this.notify.hideLoader();
 
       if (error instanceof HttpErrorResponse) {
@@ -43,7 +45,7 @@ export class ErrorService {
             msg401.success = false;
             msg401.title = 'Authentication Required';
             msg401.message =
-              'Unable to authenticate with the server! Please try again later';
+              'Unable to authenticate with the server! Please sign in.';
             msg401.path = error.url?.toString();
 
             this.notify.errorMessage(msg401.title, msg401.message);
@@ -53,6 +55,7 @@ export class ErrorService {
             });
 
             return throwError(msg401);
+
           case 403: //Authorization error
             let msg403: Result<any> = new Result();
             msg403.success = false;
@@ -65,7 +68,7 @@ export class ErrorService {
             this.nav.back();
 
             return of(msg403);
-          //return throwError(msg403);
+
           case 500: //Authentication error
             let msg500: Result<any> = new Result();
             msg500.success = false;
@@ -75,7 +78,6 @@ export class ErrorService {
 
             this.notify.errorMessage(msg500.title, msg500.message);
 
-            //return throwError(msg500);
             return of(msg500);
           case 0:
             // possibly network error. Show toast
@@ -88,7 +90,6 @@ export class ErrorService {
 
             this.notify.errorMessage(msg0.title, msg0.message);
 
-            //return throwError(msg0);
             return of(msg0);
           default: {
             let msg: Result<any> = new Result();
@@ -99,7 +100,6 @@ export class ErrorService {
 
             this.notify.errorMessage(msg.title, msg.message);
 
-            //return throwError(msg);
             return of(msg);
           }
         }
@@ -112,7 +112,6 @@ export class ErrorService {
 
         this.notify.errorMessage(msg.title, msg.message);
 
-        //return throwError(msg);
         return of(msg);
       }
     };

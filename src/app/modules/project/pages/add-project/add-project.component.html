@@ -47,8 +47,6 @@
       <div class="space-y-2">
         <label svp-label for="type">Building Type</label>
         <ng-select [items]="projectTypes$ | async"
-          bindLabel="name"
-          bindValue="id"
           [addTag]="true"
           [multiple]="false"
           [hideSelected]="true"

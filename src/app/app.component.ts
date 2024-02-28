@@ -25,7 +25,7 @@ export class AppComponent {
       barThickness : 5,
       barColors    : {
         '0'        : 'rgba(26,  188, 156, .7)',
-        '.3'       : 'rgba(41,  128, 185, .7)',
+        '.3'       : 'rgba(214,  126, 42, .7)',
         '1.0'      : 'rgba(231, 76,  60,  .7)'
       },
       shadowBlur   : 5,

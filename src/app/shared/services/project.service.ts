@@ -16,7 +16,7 @@ export class ProjectService {
     return this.http.get<Result<ProjectModel[]>>(`projects`);
   }
 
-  createProject(param: any): Observable<Result<ProjectModel>> {
+  createProject(param: FormData): Observable<Result<ProjectModel>> {
     return this.http.post<Result<ProjectModel>>(`projects`, param);
   }
 

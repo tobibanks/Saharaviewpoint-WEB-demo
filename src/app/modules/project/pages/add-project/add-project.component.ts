@@ -50,11 +50,11 @@ export class AddProjectComponent implements OnInit {
     this.loadProjectTypes();
   }
 
-  initForm(): void {
+  initForm(): void {    
     this.projectForm = this.fb.group({
-      title: ['', Validators.required],
+      title: ['My First Project'],
       size: ['54 x 23 x 12'],
-      dueDate: ['07/05/2024'],
+      dueDate: [new Date(2024, 1, 20), Validators.required],
       location: ['Abuja'],
       description: ['Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'],
       type: [null, Validators.compose([Validators.required])],
@@ -74,7 +74,7 @@ export class AddProjectComponent implements OnInit {
       })
     ).subscribe((defaultItems: ProjectTypeModel[]) => {
       this.projectTypes$ = concat(
-        of(defaultItems),
+        of(defaultItems.map((item) => item.name)),
         this.projectTypeInput$.pipe(
             distinctUntilChanged(),
             tap(() => this.projectTypeLoading = true),
@@ -83,13 +83,40 @@ export class AddProjectComponent implements OnInit {
                 catchError(() => of([])), // empty list on error
                 tap(() => this.projectTypeLoading = false)
             )),
-          map((data: any) => data.content)
+          map((data: any) => data.content.map((item: any) => item.name))
         )
       );
     })        
   }
 
   submitForm() {
+    if (!this.projectForm.valid) {
+      this.projectForm.markAllAsTouched();
+      return;
+    }
+    
+    let formParam = this.getFormValue();
+
+    this.notify.showLoader();
+    this.projectService.createProject(formParam)
+      .subscribe({
+        next: async (res: Result<ProjectModel>) => {
+          this.notify.hideLoader();
+          if (res.success) {
+            this.notify.successMessage('Saved successfully');
+          }
+          else {
+            this.notify.errorMessage(res.title, res.message);
+          }
+        },
+        error: async (err: Result<any>) => {
+          mapValidationErrors(this.projectForm, err.validationErrors);
+          this.projectForm.markAllAsTouched();
+        }
+      })
+  }
+
+  getFormValue(): FormData {
     // get param
     let param = Object.assign({}, this.projectForm.value);
     console.log('--> Params: ', param);
@@ -104,28 +131,8 @@ export class AddProjectComponent implements OnInit {
     formParam.append('size', param.size);
     formParam.append('surroundingFacilities', param.surroundingFacilities);
     formParam.append('design', param.type);
-    
-    this.notify.showLoader();
-    this.projectService.createProject(formParam)
-      .subscribe({
-        next: async (res: Result<ProjectModel>) => {
-          this.notify.hideLoader();
-          if (res.success) {
-            this.notify.successMessage('Saved successfully');
-          } 
-          else {
-            this.notify.errorMessage(res.title, res.message);
-          }
-        },
-        error: async (err: Result<any>) => {
-          // if (err instanceof HttpErrorResponse)
-            // console.log('Own error handler: ', err);
-          // if (err.title)
-          // this.notify.errorMessage('This ', 'Error got here.')
-          mapValidationErrors(this.projectForm, err.validationErrors);
-          this.projectForm.updateValueAndValidity();
-        }
-      })
+
+    return formParam;
   }
 
   trackByFn(item: ProjectTypeModel) {
