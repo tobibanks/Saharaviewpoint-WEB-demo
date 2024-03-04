@@ -8,9 +8,14 @@ import { SvpUtilityModule } from '../../../../shared/components/utilities/utilit
   selector: 'app-all-projects',
   templateUrl: './all-projects.component.html',
   standalone: true,
-  imports: [AngularSvgIconModule, SvpButtonModule, SvpTypographyModule, SvpUtilityModule]
+  imports: [
+    AngularSvgIconModule,
+    SvpButtonModule,
+    SvpTypographyModule,
+    SvpUtilityModule,
+  ],
 })
-export class AllProjectsComponent implements OnInit { 
+export class AllProjectsComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}

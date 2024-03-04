@@ -44,7 +44,6 @@ export class ProfileMenuComponent implements OnInit {
   }
 
   async logout() {
-    console.log('--> Logging out');
     await this.authService.logUserOut();
     this.authService.maskUserAsLoggedOut();
   }

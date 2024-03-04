@@ -15,6 +15,7 @@ import { SvpAnchorComponent } from '../../../../shared/components/utilities/svp-
 import { ProjectModel } from '../../../../shared/models/api-response-models/project/project.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { mapValidationErrors } from '../../../../shared/components/utilities/map-validation-errors.utility';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-project',
@@ -37,14 +38,17 @@ export class AddProjectComponent implements OnInit {
   projectTypes$: Observable<ProjectTypeModel[]> = new Observable<ProjectTypeModel[]>;
   projectTypeInput$ = new Subject<string>();
   projectTypeLoading = false;
+
+  designFile: File | null = null;
   
   constructor(
     private fb: FormBuilder,
     private projectService: ProjectService,
-    private notify: NotificationService
+    private notify: NotificationService,
+    private router: Router
   ) {}
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.initForm();
 
     this.loadProjectTypes();
@@ -52,14 +56,14 @@ export class AddProjectComponent implements OnInit {
 
   initForm(): void {    
     this.projectForm = this.fb.group({
-      title: ['My First Project'],
-      size: ['54 x 23 x 12'],
-      dueDate: [new Date(2024, 1, 20), Validators.required],
-      location: ['Abuja'],
-      description: ['Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'],
-      type: [null, Validators.compose([Validators.required])],
-      budget: [40000000],
-      surroundingFacilities: ['Shoprite'],
+      title: ['', Validators.compose([Validators.required])],
+      sizeOfSite: ['', Validators.compose([Validators.required])],
+      dueDate: [null, Validators.required],
+      location: ['', Validators.compose([Validators.required])],
+      description: [''],
+      type: ['', Validators.compose([Validators.required])],
+      budget: [0, Validators.compose([Validators.required])],
+      surroundingFacilities: [''],
       design: []
     });
   }
@@ -89,6 +93,12 @@ export class AddProjectComponent implements OnInit {
     })        
   }
 
+  onDesignFileChanged(files: File[]) {
+    if (files.length > 0) {
+      this.designFile = files[0];
+    }
+  }
+
   submitForm() {
     if (!this.projectForm.valid) {
       this.projectForm.markAllAsTouched();
@@ -102,8 +112,11 @@ export class AddProjectComponent implements OnInit {
       .subscribe({
         next: async (res: Result<ProjectModel>) => {
           this.notify.hideLoader();
+          console.log('Response from create project: ', res)
           if (res.success) {
-            this.notify.successMessage('Saved successfully');
+            await this.notify.successMessage('Project Added!', `${res.content?.title} has been added successfully, a project manager will be in touch with you soon.`);
+
+            this.router.navigate(['/project/all']);
           }
           else {
             this.notify.errorMessage(res.title, res.message);
@@ -128,9 +141,11 @@ export class AddProjectComponent implements OnInit {
     formParam.append('description', param.description);
     formParam.append('dueDate', param.dueDate);
     formParam.append('location', param.location);
-    formParam.append('size', param.size);
+    formParam.append('sizeOfSite', param.sizeOfSite);
     formParam.append('surroundingFacilities', param.surroundingFacilities);
-    formParam.append('design', param.type);
+
+    if (this.designFile)
+      formParam.append('design', this.designFile as Blob, this.designFile?.name ?? '');
 
     return formParam;
   }

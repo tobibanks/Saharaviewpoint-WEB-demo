@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <p class="text-base text-gray-600"><ng-content></ng-content></p>
+    <p class="text-base text-gray-600 dark:text-night-100"><ng-content></ng-content></p>
   `
 })
 export class SvpParagraphComponent {}

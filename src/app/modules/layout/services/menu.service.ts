@@ -13,6 +13,7 @@ export class MenuService implements OnDestroy {
   private _pagesMenu = signal<MenuItem[]>([]);
   private _subscription = new Subscription();
 
+  private _currentMenu = signal<string>('Dashboard');
   constructor(private router: Router) {
     /** Set dynamic menu */
     this._pagesMenu.set(Menu.pages);
@@ -47,6 +48,9 @@ export class MenuService implements OnDestroy {
   get pagesMenu() {
     return this._pagesMenu();
   }
+  get currentMenu() {
+    return this._currentMenu();
+  }
 
   set showSideBar(value: boolean) {
     this._showSidebar.set(value);
@@ -62,10 +66,13 @@ export class MenuService implements OnDestroy {
   public toggleMenu(menu: any) {
     this.showSideBar = true;
     menu.expanded = !menu.expanded;
+
+    this._currentMenu.set(menu.label);
   }
 
   public toggleSubMenu(submenu: SubMenuItem) {
     submenu.expanded = !submenu.expanded;
+    this._currentMenu.set(submenu.label ?? '');
   }
 
   private expand(items: Array<any>) {

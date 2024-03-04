@@ -4,9 +4,7 @@ import { NavbarMobileComponent } from './navbar-mobile/navbar-mobilecomponent';
 import { ProfileMenuComponent } from './profile-menu/profile-menu.component';
 import { NavbarMenuComponent } from './navbar-menu/navbar-menu.component';
 import { AngularSvgIconModule } from 'angular-svg-icon';
-import { AuthService } from '../../../../shared/services/auth.service';
-import { UserModel } from '../../../../shared/models/api-response-models/user.model';
-import { StorageService } from '../../../../shared/services/storage.service';
+import { SvpTypographyModule } from '../../../../shared/components/typography/typography.module';
 
 @Component({
     selector: 'app-navbar',
@@ -18,15 +16,16 @@ import { StorageService } from '../../../../shared/services/storage.service';
         NavbarMenuComponent,
         ProfileMenuComponent,
         NavbarMobileComponent,
+        SvpTypographyModule
     ],
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private menuService: MenuService) {}  
+  constructor(public menuService: MenuService) {}  
     
   ngOnInit(): void {}
 
   public toggleMobileMenu(): void {
     this.menuService.showMobileMenu = true;
-  }  
+  }
 }

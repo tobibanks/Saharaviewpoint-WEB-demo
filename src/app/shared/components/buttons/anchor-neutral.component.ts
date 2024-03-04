@@ -1,17 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, booleanAttribute } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'button[svp-neutral]',
+  selector: 'a[svp-neutral]',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   template: `
-    <button class="group relative flex justify-center rounded-md border border-transparent bg-gray-900 py-2 px-4 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-gray-700 focus:ring-offset-2 hover:bg-gray-700 dark:bg-night-800 dark:text-night-100" [ngClass]="{'w-full': isFullWidth}">
+    <a class="group relative flex justify-center rounded-md border border-transparent bg-gray-900 py-2 px-4 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-gray-700 focus:ring-offset-2 hover:bg-gray-700 cursor-pointer" [ngClass]="{'w-full': isFullWidth}" routerLink="{{svpRoute}}">
       <span class="group-hover:text-gray-50">
           <i *ngIf="icon" class="{{icon}} mr-2 icon"></i>
           <ng-content></ng-content>
       </span>
-    </button> 
+    </a> 
   `,
   styles: [`
     .icon {
@@ -23,8 +24,8 @@ import { Component, Input, booleanAttribute } from '@angular/core';
     }
   `]
 })
-export class SvpNeutralButtonComponent {
-  // @Input({required: true}) text!: string;
+export class SvpAnchorNeutralButtonComponent {
+  @Input({required: true}) svpRoute: string = '';
   @Input() icon!: string;
   @Input({transform: booleanAttribute}) isFullWidth!: boolean;
 }
