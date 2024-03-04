@@ -4,11 +4,12 @@ import { RouterOutlet } from '@angular/router';
 import { ResponsiveHelperComponent } from './shared/components/responsive-helper/responsive-helper.component';
 import { ThemeService } from './core/services/theme.service';
 import topbar from 'topbar';
+import { NxDropdownModule } from './shared/directives/nx-dropdown/nx-dropdown.module';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, ResponsiveHelperComponent],
+  imports: [CommonModule, RouterOutlet, ResponsiveHelperComponent, NxDropdownModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

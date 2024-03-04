@@ -30,46 +30,86 @@ export class NotificationService {
   }
 
   // #region Centered Messages
-  showMessage(title?: string, message?: string): void;
-  showMessage(message?: string): void;
+  showMessage(title?: string, message?: string): Promise<boolean>;
+  showMessage(message?: string): Promise<boolean>;
   
-  showMessage(title: string = '', message: string = ''): void {
+  showMessage(title: string = '', message: string = ''): Promise<boolean> {
+    let id: string = this.generateUniqueID();
     iziToast.show({
+      id: id,
       title: title,
       message: message,
     });
+    
+    return new Promise((resolve) => {
+      document.addEventListener('iziToast-closed', function(data: any) {
+        if (data.detail.id === id) {
+          resolve(true);
+        }
+      })
+    });
   }
 
-  successMessage(message?: string): void;
-  successMessage(title?: string, message?: string): void;
+  successMessage(message?: string): Promise<boolean>;
+  successMessage(title?: string, message?: string): Promise<boolean>;
 
-  successMessage(title: string = '', message: string = ''): void {
-  iziToast.success({
+  successMessage(title: string = '', message: string = ''): Promise<boolean> {
+    let id: string = this.generateUniqueID();
+    iziToast.success({
+      id: id,
       title: title,
       message: message,
       color: this.themeService.isDark ? 'rgb(0 151 37)' : 'rgba(166, 239, 184, .9)'
     });
+    
+    return new Promise((resolve) => {
+      document.addEventListener('iziToast-closed', function(data: any) {
+        if (data.detail.id === id) {
+          resolve(true);
+        }
+      })
+    });
   }
 
-  infoMessage(title?: string, message?: string): void;
-  infoMessage(message?: string): void;
+  infoMessage(title?: string, message?: string): Promise<boolean>;
+  infoMessage(message?: string): Promise<boolean>;
 
-  infoMessage(title: string = '', message: string = ''): void {
+  infoMessage(title: string = '', message: string = ''): Promise<boolean> {
+    let id: string = this.generateUniqueID();
     iziToast.info({
+      id: id,
       title: title,
       message: message,
       color: this.themeService.isDark ? 'rgb(1 109 164)' : 'rgba(157, 222, 255, .9)'
     });
+    
+    return new Promise((resolve) => {
+      document.addEventListener('iziToast-closed', function(data: any) {
+        if (data.detail.id === id) {
+          resolve(true);
+        }
+      })
+    });
   }
 
-  errorMessage(title?: string, message?: string): void;
-  errorMessage(message?: string): void;
+  errorMessage(title?: string, message?: string): Promise<boolean>;
+  errorMessage(message?: string): Promise<boolean>;
 
-  errorMessage(title: string = '', message: string = ''): void {
+  errorMessage(title: string = '', message: string = ''): Promise<boolean> {
+    let id: string = this.generateUniqueID();
     iziToast.error({
+      id: id,
       title: title,
       message: message,
       color: this.themeService.isDark ? 'rgb(185 40 50)' : 'rgba(255, 175, 180, .9)'
+    });
+    
+    return new Promise((resolve) => {
+      document.addEventListener('iziToast-closed', function(data: any) {
+        if (data.detail.id === id) {
+          resolve(true);
+        }
+      })
     });
   }
   // #endregion
@@ -153,12 +193,10 @@ export class NotificationService {
         color: this.themeService.isDark ? 'rgb(135 124 0)' : 'rgba(255, 249, 178, .9)',
         buttons: [
           ['<button><b>Yes</b></button>', function (instance, toast) {
-              console.log('YES')
               instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
               resolve(true);
           }, true],
           ['<button>No</button>', function (instance, toast) {
-            console.log('NO')
               instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
               resolve(false);
           }, false],
@@ -167,5 +205,9 @@ export class NotificationService {
 
       iziToast.question(options);
     });
+  }
+
+  generateUniqueID(): string {
+    return Math.random().toString(36).substr(2, 9);
   }
 }

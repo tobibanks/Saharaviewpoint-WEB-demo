@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <h1 class="text-3xl font-bold text-gray-800"><ng-content></ng-content></h1>
+    <h1 class="text-3xl font-bold text-gray-800 dark:text-night-50"><ng-content></ng-content></h1>
   `
 })
 export class SvpHeaderComponent {}

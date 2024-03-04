@@ -1,14 +1,14 @@
 export interface ProjectModel {
   id: number;
-  name: string;
+  title: string;
   description: string;
   status: string;
   dueDate: Date;
   isPriority: boolean;
   order: number;
-  assignedId: number;
-  assignee: ProjectUserModel;
-  createdBy: ProjectUserModel;
+  assignedId?: number;
+  assignee?: ProjectUserModel;
+  createdBy?: ProjectUserModel;
 }
 
 export interface ProjectUserModel {

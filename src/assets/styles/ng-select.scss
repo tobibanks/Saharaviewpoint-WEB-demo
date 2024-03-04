@@ -1,6 +1,4 @@
 .ng-select.ng-select-opened > .ng-select-container {
-  //   background: #fff;
-  //   border-color: #b3b3b3 #ccc #d9d9d9;
   @apply w-full rounded-md border border-gray-300 px-3 py-3 text-xs placeholder-gray-400 focus:z-10  focus:border-primary-500 focus:outline-none focus:ring-primary-500 dark:border-night-500 dark:bg-night-700 dark:text-night-200 dark:placeholder-night-200;
 }
 .ng-select.ng-select-opened > .ng-select-container:hover {

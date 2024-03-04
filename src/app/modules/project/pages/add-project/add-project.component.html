@@ -1,5 +1,8 @@
-<div class="mx-auto px-4 py-4 sm:px-8 lg:container">
-
+<div class="bg-white my-14 mx-auto px-8 py-4 sm:px-16 lg:container rounded-xl dark:bg-night-700">
+  <div class="text-center mt-10 mb-16">
+    <h1 svp-header class="">Add New Project</h1>
+  </div>
+  
   <form [formGroup]="projectForm">
     <div class="grid grid-cols-3 gap-6">
       <div class="space-y-2">
@@ -12,12 +15,12 @@
       </div>
 
       <div class="space-y-2">
-        <label svp-label for="size">Site Size</label>
+        <label svp-label for="sizeOfSite">Site Size</label>
         <input
           type="text"
-          formControlName="size"          
+          formControlName="sizeOfSite"          
           placeholder="Site size"/>
-        <svp-validation-errors [svpControl]="projectForm.get('size')" />
+        <svp-validation-errors [svpControl]="projectForm.get('sizeOfSite')" />
       </div> 
 
       <div class="space-y-2">
@@ -72,7 +75,7 @@
       <div class="w-full h-full row-span-2">
         <label svp-label for="design" [marginBottom]="6">Project Design</label>
         <div class="w-full mb-2"></div>
-        <svp-file-selector svpId="design" [svpForm]="projectForm" [height]="13" />
+        <svp-file-selector svpId="design" [svpForm]="projectForm" [height]="13" (onFileChanged)="onDesignFileChanged($event)" />
         <svp-validation-errors [svpControl]="projectForm.get('design')" />
       </div>
 

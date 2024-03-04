@@ -6,7 +6,7 @@ import { Component, Input, booleanAttribute } from '@angular/core';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <button type="button" class="group relative flex justify-center rounded-md border border-transparent bg-primary-500 py-2 px-4 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 hover:bg-primary-400" [ngClass]="{'w-full': isFullWidth}">
+    <button type="button" class="group relative flex justify-center rounded-md border border-transparent bg-primary-500 py-2 px-4 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 hover:bg-primary-400 dark:bg-primary-600 dark:text-night-50 dark:hover:bg-primary-700" [ngClass]="{'w-full': isFullWidth}">
       <span class="group-hover:text-primary-50">
           <i *ngIf="icon" class="{{icon}} mr-2 icon"></i>
           <ng-content></ng-content>

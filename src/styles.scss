@@ -4,7 +4,10 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-@import "./ng-select.styles.scss";
+@import "boxicons";
+
+@import "./assets/styles/ng-select.scss";
+@import "./assets/styles/table.scss";
 
 @layer base {
 	[type='text'],
@@ -52,6 +55,34 @@
 		padding-right: 0.5rem;
 	}
 }
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar:hover {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #d67e2a;  /* color of the scroll thumb */
+  transition: all 0.3s ease;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #d67e2a
+}
+
 
 /** Plugins **/
 @import './assets/styles/apexchart.scss';
