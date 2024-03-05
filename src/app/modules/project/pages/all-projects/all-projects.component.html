@@ -5,8 +5,24 @@
       <h2 svp-subHeader>View</h2>
     </div>
     
+  <div class="flex space-x-3 my-4">
+    <div class="align-middle">
+      <h2 svp-subHeader>View</h2>
+    </div>
+    
     <div svp-card-selector>
       <div class="rounded-full p-2 bg-[#800080]"></div>
+      <span>Table</span>
+    </div>    
+    
+    <div svp-card-selector>
+      <svg-icon src="assets/icons/appicons/bar-chart.svg" [svgClass]="'h-4 h-4'"/>
+      <span>Board</span>
+    </div>    
+    
+    <div svp-card-selector>
+      <svg-icon src="assets/icons/appicons/grid-view-outline.svg" [svgClass]="'h-4 h-4'"/>
+      <span>Grid</span>
       <span>Table</span>
     </div>    
     
@@ -22,6 +38,7 @@
   </div>
   
   <div class="flex space-x-3 my-4 mt-4">
+  <div class="flex space-x-3 my-4 mt-4">
     <div svp-card-selector isActive="true">
       <span>All Projects</span>
     </div>
@@ -32,9 +49,15 @@
 
     <div svp-card-selector>
       <span>In Progress</span>
+      <span>Awaiting Approval</span>
     </div>
 
     <div svp-card-selector>
+      <span>In Progress</span>
+    </div>
+
+    <div svp-card-selector>
+      <span>Completed</span>
       <span>Completed</span>
     </div>
   </div>
