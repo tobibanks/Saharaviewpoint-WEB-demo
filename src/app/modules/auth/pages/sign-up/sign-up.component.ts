@@ -7,7 +7,7 @@ import { passwordMatchValidator } from '../../../../shared/validators/PasswordMa
 import { AuthService } from '../../../../shared/services/auth.service';
 import { Result } from '../../../../shared/models/api-response-models/Result';
 import { NotificationService } from '../../../../shared/services/notification.service';
-import { ClientRegisterModel } from '../../../../shared/models/api-input-models/client.register.model';
+import { ClientRegisterModel } from '../../../../shared/models/api-input-models/auth/client.register.model';
 import { AuthDataModel } from '../../../../shared/models/api-response-models/auth/auth-data.model';
 import { SvpUtilityModule } from '../../../../shared/components/utilities/utility.module';
 import { SvpButtonModule } from '../../../../shared/components/buttons/btn.module';

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Result } from '../models/api-response-models/Result';
 import { ProjectTypeModel } from '../models/api-response-models/project/project-type.model';
 import { ProjectModel } from '../models/api-response-models/project/project.model';
+import { ProjectSearchModel } from '../models/api-input-models/project/project-search.model';
 
 @Injectable({
   providedIn: 'root',
@@ -12,8 +13,18 @@ export class ProjectService {
   constructor(private http: HttpClient) {}
 
   // #region PROJECTS
-  listProjects(): Observable<Result<ProjectModel[]>> {
-    return this.http.get<Result<ProjectModel[]>>(`projects`);
+  listProjects(param?: ProjectSearchModel): Observable<Result<ProjectModel[]>> {
+    if (param == null) {
+      param = new ProjectSearchModel();
+    }
+    
+    let query = `searchQuery=${param.searchQuery || ''}
+      &status=${param.status || ''}
+      &startDueDate=${param.startDueDate || ''}
+      &endDueDate=${param.endDueDate || ''}
+      &priorityOnly=${param.priorityOnly}`;
+    
+    return this.http.get<Result<ProjectModel[]>>(`projects?${query}`);
   }
 
   createProject(param: FormData): Observable<Result<ProjectModel>> {

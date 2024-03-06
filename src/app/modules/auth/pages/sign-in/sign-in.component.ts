@@ -3,7 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { RouterLink, Router, ActivatedRoute } from "@angular/router";
 import { AngularSvgIconModule } from 'angular-svg-icon';
-import { LoginModel } from "../../../../shared/models/api-input-models/login.model";
+import { LoginModel } from "../../../../shared/models/api-input-models/auth/login.model";
 import { AuthService } from "../../../../shared/services/auth.service";
 import { Result } from "../../../../shared/models/api-response-models/Result";
 import { AuthDataModel } from "../../../../shared/models/api-response-models/auth/auth-data.model";

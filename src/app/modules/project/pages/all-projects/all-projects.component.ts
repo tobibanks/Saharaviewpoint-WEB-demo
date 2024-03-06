@@ -9,6 +9,7 @@ import { NotificationService } from '../../../../shared/services/notification.se
 import { ProjectService } from '../../../../shared/services/project.service';
 import { Result } from '../../../../shared/models/api-response-models/Result';
 import { NxDropdownModule } from '../../../../shared/directives/nx-dropdown/nx-dropdown.module';
+import { ProjectSearchModel } from '../../../../shared/models/api-input-models/project/project-search.model';
 
 @Component({
   selector: 'app-all-projects',
@@ -22,28 +23,32 @@ import { NxDropdownModule } from '../../../../shared/directives/nx-dropdown/nx-d
   ],
 })
 export class AllProjectsComponent implements OnInit {
-  allProjects: ProjectModel[] = [];
-  // [
-  //   {
-  //     id: 1,
-  //     title: 'First Project',
-  //     description: 'Just another sample description',
-  //     status: 'Pending',
-  //     dueDate: new Date(),
-  //     isPriority: true,
-  //     order: 1,
-  //   },
-  //   {
-  //     id: 2,
-  //     title: 'Second Project',
-  //     description: 'Just another sample description',
-  //     status: 'Pending',
-  //     dueDate: new Date(),
-  //     isPriority: false,
-  //     order: 2,
+
+  searchParams = new ProjectSearchModel();
+
+    // TODO: initialize allProjects as an empty array
+  allProjects: ProjectModel[] = //[];
+  [
+    {
+      id: 1,
+      title: 'First Project',
+      description: 'Just another sample description',
+      status: 'Pending',
+      dueDate: new Date(),
+      isPriority: true,
+      order: 1,
+    },
+    {
+      id: 2,
+      title: 'Second Project',
+      description: 'Just another sample description',
+      status: 'Pending',
+      dueDate: new Date(),
+      isPriority: false,
+      order: 2,
       
-  //   }
-  // ];
+    }
+  ];
   
   constructor(
     private projectService: ProjectService,
@@ -51,13 +56,32 @@ export class AllProjectsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.loadProjects();
+    this.loadProjects(); // TODO: uncomment this line
   }
 
   loadProjects(): void {
     this.notify.showLoader();
 
     this.projectService.listProjects().subscribe(
+      async (res: Result<ProjectModel[]>) => {
+        this.notify.hideLoader();
+
+        if (res.success) {
+          this.allProjects = res.content ?? [];
+        } 
+        else {
+          this.notify.timedErrorMessage(res.title, res.message);
+        }
+      }
+    );
+  }
+
+  searchProjects(searchTerm: string): void {
+    this.searchParams.searchQuery = searchTerm;
+    
+    
+    this.notify.showLoader();    
+    this.projectService.listProjects(this.searchParams).subscribe(
       async (res: Result<ProjectModel[]>) => {
         this.notify.hideLoader();
 

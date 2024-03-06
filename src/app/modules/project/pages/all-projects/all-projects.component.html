@@ -1,64 +1,49 @@
 <div class="mx-auto px-4 py-4 sm:px-8 lg:container">
+  <div class="flex flex-row justify-between">
+    <div>
+      <div class="flex space-x-3 my-4">
+        <div class="align-middle">
+          <h2 svp-subHeader>View</h2>
+        </div>
+            
+        <div svp-card-selector>
+          <svg-icon src="assets/icons/appicons/bar-chart.svg" [svgClass]="'h-4 h-4'"/>
+          <span>Board</span>
+        </div>    
+        
+        <div svp-card-selector>
+          <svg-icon src="assets/icons/appicons/table.svg" [svgClass]="'h-4 h-4'"/>
+          <span>Table</span>
+        </div>
   
-  <div class="flex space-x-3 my-4">
-    <div class="align-middle">
-      <h2 svp-subHeader>View</h2>
-    </div>
-    
-  <div class="flex space-x-3 my-4">
-    <div class="align-middle">
-      <h2 svp-subHeader>View</h2>
-    </div>
-    
-    <div svp-card-selector>
-      <div class="rounded-full p-2 bg-[#800080]"></div>
-      <span>Table</span>
-    </div>    
-    
-    <div svp-card-selector>
-      <svg-icon src="assets/icons/appicons/bar-chart.svg" [svgClass]="'h-4 h-4'"/>
-      <span>Board</span>
-    </div>    
-    
-    <div svp-card-selector>
-      <svg-icon src="assets/icons/appicons/grid-view-outline.svg" [svgClass]="'h-4 h-4'"/>
-      <span>Grid</span>
-      <span>Table</span>
-    </div>    
-    
-    <div svp-card-selector>
-      <svg-icon src="assets/icons/appicons/bar-chart.svg" [svgClass]="'h-4 h-4'"/>
-      <span>Board</span>
-    </div>    
-    
-    <div svp-card-selector>
-      <svg-icon src="assets/icons/appicons/grid-view-outline.svg" [svgClass]="'h-4 h-4'"/>
-      <span>Grid</span>
-    </div>    
-  </div>
+        <div svp-card-selector>
+          <svg-icon src="assets/icons/appicons/grid-view-outline.svg" [svgClass]="'h-4 h-4'"/>
+          <span>Grid</span>
+        </div>    
+      </div>
+      
+      <div class="flex space-x-3 my-4 mt-4">
+        <div svp-card-selector isActive="true">
+          <span>All Projects</span>
+        </div>
   
-  <div class="flex space-x-3 my-4 mt-4">
-  <div class="flex space-x-3 my-4 mt-4">
-    <div svp-card-selector isActive="true">
-      <span>All Projects</span>
+        <div svp-card-selector>
+          <span>Awaiting Approval</span>
+        </div>
+  
+        <div svp-card-selector>
+          <span>In Progress</span>
+        </div>
+  
+        <div svp-card-selector>
+          <span>Completed</span>
+        </div>
+      </div>
     </div>
 
-    <div svp-card-selector>
-      <span>Awaiting Approval</span>
-    </div>
-
-    <div svp-card-selector>
-      <span>In Progress</span>
-      <span>Awaiting Approval</span>
-    </div>
-
-    <div svp-card-selector>
-      <span>In Progress</span>
-    </div>
-
-    <div svp-card-selector>
-      <span>Completed</span>
-      <span>Completed</span>
+    <div class="">
+      <svp-search-button svpPlaceholder="Search projects" displaySearchButton="false" widthClass="w-80" (onChange)="this.searchParams.searchQuery = $event" (onSearch)="searchProjects($event)" />
+      
     </div>
   </div>
 
@@ -82,55 +67,53 @@
   }
   @else {
     <div class="mt-6 min-h-80 py-8 px-4 rounded-xl bg-white dark:bg-night-700">
-      <div class="flex flex-col space-y-4 items-center justify-center">
-        <h1 svp-subHeader>
-          All Projects
-        </h1>
+      <div class="text-end mb-8">
+        <a svp-neutral type="button" svpRoute="/project/new">Add new project</a>
+      </div>
 
-        <div class="w-full">
-          <div class="table-container" style="min-height: 320px; max-height: 500px;">
-            <table class="fixed-header header-1 bordered">
-              <thead>
-                <tr>
-                  <th><span>#</span></th>
-                  <th><span>Title</span></th>
-                  <th><span>Status</span></th>
-                  <th><span>Start Date</span></th>
-                  <!-- <th><span>End Date</span></th> -->
-                  <th><span>Actions</span></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let project of allProjects; let index = index">
-                  <td><span>{{ index + 1 }}</span></td>
-                  <td><span>{{ project.title }}</span></td>
-                  <td><span>{{ project.status }}</span></td>
-                  <td><span>{{ project.dueDate | date:'dd/MM/yyyy' }}</span></td>
-                  <td>
-                    <div class="nx-dropdown" x-dropdown container="body" tabindex="0">
-                      <a (click)="(false)" class="btn btn-action">
-                        <i class="bx bx-dots-vertical-rounded"></i>
-                      </a>
-                      <div class="nx-dropdown-content">
-                        <ul>
-                          <li>
-                            <a class="dropdown-item custom">
-                              First button
-                            </a>
-                          </li>
-                          <li >
-                            <a [classList]="'dropdown-item custom'">
-                              Second button
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
+      <div class="w-full">
+        <div class="table-container" style="min-height: 320px; max-height: 500px;">
+          <table class="fixed-header header-1 bordered">
+            <thead>
+              <tr>
+                <th><span>#</span></th>
+                <th><span>Title</span></th>
+                <th><span>Status</span></th>
+                <th><span>Start Date</span></th>
+                <!-- <th><span>End Date</span></th> -->
+                <th><span>Actions</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let project of allProjects; let index = index">
+                <td><span>{{ index + 1 }}</span></td>
+                <td><span>{{ project.title }}</span></td>
+                <td><span>{{ project.status }}</span></td>
+                <td><span>{{ project.dueDate | date:'dd/MM/yyyy' }}</span></td>
+                <td>
+                  <div class="nx-dropdown" x-dropdown container="body" tabindex="0">
+                    <a (click)="(false)" class="btn btn-action">
+                      <i class="bx bx-dots-vertical-rounded"></i>
+                    </a>
+                    <div class="nx-dropdown-content">
+                      <ul>
+                        <li>
+                          <a class="dropdown-item custom">
+                            First button
+                          </a>
+                        </li>
+                        <li >
+                          <a [classList]="'dropdown-item custom'">
+                            Second button
+                          </a>
+                        </li>
+                      </ul>
                     </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
