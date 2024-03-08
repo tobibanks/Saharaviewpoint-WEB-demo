@@ -8,7 +8,7 @@ import { NotificationService } from '../../../../shared/services/notification.se
 import { ProjectService } from '../../../../shared/services/project.service';
 import { SvpUtilityModule } from '../../../../../../../../libs/shared/components/src/lib/utilities/utility.module';
 import { CommonModule } from '@angular/common';
-import { ProjectStatusEnum } from '../../../../shared/enums/ProjectStatusEnum';
+import { ProjectStatusEnum } from '@svp-models';
 import { SvpDashboardCardComponent } from '../../../../../../../../libs/shared/components/src/lib/utilities/dashboard-card.component';
 import { Router } from '@angular/router';
 
@@ -26,7 +26,7 @@ import { Router } from '@angular/router';
   ],
 })
 export class HomeComponent implements OnInit {
-  projectStatusEnum = ProjectStatusEnum;
+  projectStatusEnum = new ProjectStatusEnum();
 
   projectCount: number = 0;
   allTasks: number = 0;

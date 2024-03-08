@@ -5,14 +5,14 @@ import { Result } from '../../../../../../libs/shared/models/src/lib/api-respons
 import { ProjectTypeModel } from '../../../../../../libs/shared/models/src/lib/api-response-models/project/project-type.model';
 import { ProjectModel } from '../../../../../../libs/shared/models/src/lib/api-response-models/project/project.model';
 import { ProjectSearchModel } from '../../../../../../libs/shared/models/src/lib/api-input-models/project/project-search.model';
-import { ProjectStatusEnum } from '../enums/ProjectStatusEnum';
+import { ProjectStatusEnum } from '@svp-models';
 import { NotificationService } from './notification.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProjectService {
-  projectStatusEnum = ProjectStatusEnum;
+  projectStatusEnum = new ProjectStatusEnum();
 
   searchParam = new ProjectSearchModel();
   private _searchParams$ = new Subject<ProjectSearchModel>;

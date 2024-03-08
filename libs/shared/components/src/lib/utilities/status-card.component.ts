@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { Component, Input } from "@angular/core";
-import { ProjectStatusEnum } from "../../../../../../libs/enums/ProjectStatusEnum";
+import { ProjectStatusEnum } from "@svp-models";
 
 @Component({
   selector: "svp-status-card",
@@ -25,5 +25,5 @@ import { ProjectStatusEnum } from "../../../../../../libs/enums/ProjectStatusEnu
 export class SvpStatusCardComponent {
   @Input({required: true}) status: string = '';
 
-  ProjectStatusEnum = ProjectStatusEnum;
+  ProjectStatusEnum = new ProjectStatusEnum();
 }

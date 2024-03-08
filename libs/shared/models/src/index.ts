@@ -13,3 +13,7 @@ export * from './lib/utils/AuthRoleData';
 export * from './lib/utils/ValidationErrorModel';
 
 export * from './lib/view-models/chart-options';
+
+// enums
+export * from './lib/enums/ProjectStatusEnum';
+export * from './lib/enums/RoleEnum';

@@ -9,7 +9,7 @@ import { ProjectService } from '../../../../shared/services/project.service';
 import { Result } from '../../../../../../../../libs/shared/models/src/lib/api-response-models/Result';
 import { NxDropdownModule } from '@svp-directives';
 import { FormsModule } from '@angular/forms';
-import { ProjectStatusEnum } from '../../../../shared/enums/ProjectStatusEnum';
+import { ProjectStatusEnum } from '@svp-models';
 
 @Component({ 
   selector: 'app-all-projects',
@@ -24,7 +24,7 @@ import { ProjectStatusEnum } from '../../../../shared/enums/ProjectStatusEnum';
   ],
 })
 export class AllProjectsComponent implements OnInit {
-  projectStatusEnum = ProjectStatusEnum;
+  projectStatusEnum = new ProjectStatusEnum();
 
     // TODO: initialize allProjects as an empty array
   allProjects: ProjectModel[] | null = [];
