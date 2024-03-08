@@ -3,7 +3,6 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgClass } from '@angular/common';
-import { passwordMatchValidator } from '../../../../shared/validators/PasswordMatchValidator';
 import { AuthService } from '../../../../shared/services/auth.service';
 import { Result } from '../../../../shared/models/api-response-models/Result';
 import { NotificationService } from '../../../../shared/services/notification.service';
@@ -13,6 +12,7 @@ import { SvpUtilityModule } from '../../../../shared/components/utilities/utilit
 import { SvpButtonModule } from '../../../../shared/components/buttons/btn.module';
 import { SvpFormInputModule } from '../../../../shared/components/input-fields/form-input.module';
 import { SvpAuthInputComponent } from '../../components/auth-input.component';
+import { passwordMatchValidator } from '../../../../shared/validators/PasswordMatchValidator';
 
 @Component({
     selector: 'app-sign-up',
