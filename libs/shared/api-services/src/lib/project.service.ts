@@ -1,12 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject, switchMap } from 'rxjs';
-import { Result } from '../../../../../../libs/shared/models/src/lib/api-response-models/Result';
-import { ProjectTypeModel } from '../../../../../../libs/shared/models/src/lib/api-response-models/project/project-type.model';
-import { ProjectModel } from '../../../../../../libs/shared/models/src/lib/api-response-models/project/project.model';
-import { ProjectSearchModel } from '../../../../../../libs/shared/models/src/lib/api-input-models/project/project-search.model';
-import { ProjectStatusEnum } from '@svp-models';
-import { NotificationService } from './notification.service';
+import { ProjectModel, ProjectSearchModel, ProjectStatusEnum, ProjectTypeModel, Result } from '@svp-models';
+import { NotificationService } from '../../../services/src/lib/notification.service';
 
 @Injectable({
   providedIn: 'root',

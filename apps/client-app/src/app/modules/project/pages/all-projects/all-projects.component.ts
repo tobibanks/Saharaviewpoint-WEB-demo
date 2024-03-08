@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularSvgIconModule } from 'angular-svg-icon';
-import { SvpTypographyModule, SvpButtonModule } from '@svp-components';
-import { SvpUtilityModule } from '../../../../../../../../libs/shared/components/src/lib/utilities/utility.module';
-import { ProjectModel } from '../../../../../../../../libs/shared/models/src/lib/api-response-models/project/project.model';
+import { SvpTypographyModule, SvpButtonModule, SvpUtilityModule } from '@svp-components';
 import { CommonModule } from '@angular/common';
-import { NotificationService } from '../../../../shared/services/notification.service';
-import { ProjectService } from '../../../../shared/services/project.service';
-import { Result } from '../../../../../../../../libs/shared/models/src/lib/api-response-models/Result';
 import { NxDropdownModule } from '@svp-directives';
 import { FormsModule } from '@angular/forms';
-import { ProjectStatusEnum } from '@svp-models';
+import { ProjectModel, ProjectStatusEnum, Result } from '@svp-models';
+import { NotificationService } from '@svp-services';
+import { ProjectService } from 'libs/shared/api-services/src/lib/project.service';
 
 @Component({ 
   selector: 'app-all-projects',

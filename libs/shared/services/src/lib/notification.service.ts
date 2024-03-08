@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import topbar from 'topbar';
 import iziToast, { IziToastSettings } from 'izitoast';
-import { ThemeService } from '../../core/services/theme.service';
+import { ThemeService } from './theme/theme.service';
 
 @Injectable({
   providedIn: 'root',

@@ -4,7 +4,7 @@ import { RouterLink } from '@angular/router';
 import { SidebarMenuComponent } from './sidebar-menu/sidebar-menu.component';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { NgClass } from '@angular/common';
-import { ThemeService } from '../../../../core/services/theme.service';
+import { ThemeService } from '../../../../../../../../libs/shared/services/src/lib/theme/theme.service';
 
 @Component({
     selector: 'app-sidebar',

@@ -3,14 +3,11 @@ import { Component, OnInit } from "@angular/core";
 import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { RouterLink, Router, ActivatedRoute } from "@angular/router";
 import { AngularSvgIconModule } from 'angular-svg-icon';
-import { LoginModel } from "../../../../../../../../libs/shared/models/src/lib/api-input-models/auth/login.model";
-import { AuthService } from "../../../../shared/services/auth.service";
-import { Result } from "../../../../../../../../libs/shared/models/src/lib/api-response-models/Result";
-import { AuthDataModel } from "../../../../../../../../libs/shared/models/src/lib/api-response-models/auth/auth-data.model";
-import { NotificationService } from "../../../../shared/services/notification.service";
-import { SvpUtilityModule } from "../../../../../../../../libs/shared/components/src/lib/utilities/utility.module";
 import { SvpAuthInputComponent } from "../../components/auth-input.component";
-import { SvpButtonModule, SvpFormInputModule } from '@svp-components';
+import { SvpButtonModule, SvpFormInputModule, SvpUtilityModule } from '@svp-components';
+import { LoginModel, Result, AuthDataModel } from "@svp-models";
+import { NotificationService } from "@svp-services";
+import { AuthService } from "libs/shared/api-services/src/lib/auth.service";
 
 
 @Component({

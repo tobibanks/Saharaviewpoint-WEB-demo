@@ -1,5 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-import { LocalStorageUtility } from '../../../../../../libs/shared/utilities/src/lib/local-storage.utility';
+import { LocalStorageUtility } from '../../../../utilities/src/lib/local-storage.utility';
 @Injectable({
   providedIn: 'root',
 })

@@ -3,15 +3,12 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgClass } from '@angular/common';
-import { AuthService } from '../../../../shared/services/auth.service';
-import { Result } from '../../../../../../../../libs/shared/models/src/lib/api-response-models/Result';
-import { NotificationService } from '../../../../shared/services/notification.service';
-import { ClientRegisterModel } from '../../../../shared/models/api-input-models/client.register.model';
-import { AuthDataModel } from '../../../../../../../../libs/shared/models/src/lib/api-response-models/auth/auth-data.model';
-import { SvpUtilityModule } from '../../../../../../../../libs/shared/components/src/lib/utilities/utility.module';
-import { SvpButtonModule, SvpFormInputModule } from '@svp-components';
+import { SvpButtonModule, SvpFormInputModule, SvpUtilityModule, passwordMatchValidator } from '@svp-components';
 import { SvpAuthInputComponent } from '../../components/auth-input.component';
-import { passwordMatchValidator } from '../../../../shared/validators/PasswordMatchValidator';
+import { Result, AuthDataModel } from '@svp-models';
+import { NotificationService } from '@svp-services';
+import { ClientRegisterModel } from 'apps/client-app/src/app/shared/models/api-input-models/client.register.model';
+import { AuthService } from 'libs/shared/api-services/src/lib/auth.service';
 
 @Component({
     selector: 'app-sign-up',

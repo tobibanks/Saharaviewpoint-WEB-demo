@@ -6,6 +6,8 @@
       "@svp-directives": ["libs/shared/directives/src/index.ts"],
       "@svp-models": ["libs/shared/models/src/index.ts"],
       "@svp-utilities": ["libs/shared/utilities/src/index.ts"],
+      "@svp-api-services": ["libs/shared/api-services/src/index.ts"],
+      "@svp-services": ["libs/shared/services/src/index.ts"],
     },
     "baseUrl": ".",
   },

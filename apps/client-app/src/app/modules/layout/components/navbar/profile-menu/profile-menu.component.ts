@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgClass } from '@angular/common';
 import { ClickOutsideDirective } from '@svp-directives';
-import { AuthService } from '../../../../../shared/services/auth.service';
-import { StorageService } from '../../../../../shared/services/storage.service';
-import { UserModel } from '../../../../../../../../../libs/shared/models/src/lib/api-response-models/user.model';
+import { UserModel } from '@svp-models';
+import { StorageService } from '@svp-services';
+import { AuthService } from 'libs/shared/api-services/src/lib/auth.service';
 
 @Component({
     selector: 'app-profile-menu',

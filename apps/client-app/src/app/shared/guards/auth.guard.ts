@@ -6,7 +6,7 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '@svp-api-services';
 import { Observable } from 'rxjs';
 
 export const AuthGuard: CanActivateFn = (

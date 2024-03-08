@@ -1,16 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularSvgIconModule } from 'angular-svg-icon';
-import {SvpButtonModule } from '@svp-components';
-import { SvpTypographyModule } from '../../../../../../../../libs/shared/components/src/lib/typography/typography.module';
-import { Result } from '../../../../../../../../libs/shared/models/src/lib/api-response-models/Result';
-import { ProjectModel } from '../../../../../../../../libs/shared/models/src/lib/api-response-models/project/project.model';
-import { NotificationService } from '../../../../shared/services/notification.service';
-import { ProjectService } from '../../../../shared/services/project.service';
-import { SvpUtilityModule } from '../../../../../../../../libs/shared/components/src/lib/utilities/utility.module';
+import {SvpButtonModule, SvpDashboardCardComponent, SvpTypographyModule, SvpUtilityModule } from '@svp-components';
 import { CommonModule } from '@angular/common';
-import { ProjectStatusEnum } from '@svp-models';
-import { SvpDashboardCardComponent } from '../../../../../../../../libs/shared/components/src/lib/utilities/dashboard-card.component';
+import { ProjectModel, ProjectStatusEnum, Result } from '@svp-models';
 import { Router } from '@angular/router';
+import { ProjectService } from 'libs/shared/api-services/src/lib/project.service';
+import { NotificationService } from '@svp-services';
 
 @Component({
   selector: 'app-home',

@@ -1,13 +1,13 @@
 import { HttpRequest, HttpHandlerFn } from "@angular/common/http";
 import { inject } from "@angular/core";
 import { catchError, throwError, Observable, switchMap } from "rxjs";
-import { NotificationService } from "../../../../../../apps/client-app/src/app/shared/services/notification.service";
+import { NotificationService } from "../../../../services/src/lib/notification.service";
 import { ErrorService } from "../error-handlers/error.server.handler";
-import { AuthService } from "../../../../../../apps/client-app/src/app/shared/services/auth.service";
+import { AuthService } from "../../../../api-services/src/lib/auth.service";
 import { AuthDataModel } from "../../../../models/src/lib/api-response-models/auth/auth-data.model";
 import { Result } from "../../../../models/src/lib/api-response-models/Result";
 import { Router } from "@angular/router";
-import { StorageService } from "../../../../../../apps/client-app/src/app/shared/services/storage.service";
+import { StorageService } from "../../../../services/src/lib/storage.service";
 
 // always call this last in your HTTP Interceptors
 export function errorHandlerInterceptor(request: HttpRequest<unknown>, next: HttpHandlerFn) {

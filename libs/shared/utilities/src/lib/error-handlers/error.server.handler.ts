@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { NotificationService } from '../../../../../../apps/client-app/src/app/shared/services/notification.service';
+import { NotificationService } from '../../../../services/src/lib/notification.service';
 import { NavigationUtility } from '../navigation.utility';
 import { Result } from '../../../../models/src/lib/api-response-models/Result';
 
