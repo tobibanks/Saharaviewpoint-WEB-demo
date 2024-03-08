@@ -8,10 +8,9 @@ import { AuthService } from "../../../../shared/services/auth.service";
 import { Result } from "../../../../shared/models/api-response-models/Result";
 import { AuthDataModel } from "../../../../shared/models/api-response-models/auth/auth-data.model";
 import { NotificationService } from "../../../../shared/services/notification.service";
-import { SvpButtonModule } from "../../../../shared/components/buttons/btn.module";
-import { SvpUtilityModule } from "../../../../shared/components/utilities/utility.module";
-import { SvpFormInputModule } from "../../../../shared/components/input-fields/form-input.module";
+import { SvpUtilityModule } from "../../../../../../../../libs/shared/components/src/lib/utilities/utility.module";
 import { SvpAuthInputComponent } from "../../components/auth-input.component";
+import { SvpButtonModule, SvpFormInputModule } from '@svp-components';
 
 
 @Component({

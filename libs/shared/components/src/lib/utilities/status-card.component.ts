@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { Component, Input } from "@angular/core";
-import { ProjectStatusEnum } from "../../enums/ProjectStatusEnum";
+import { ProjectStatusEnum } from "../../../../../../apps/client-app/src/app/shared/enums/ProjectStatusEnum";
 
 @Component({
   selector: "svp-status-card",

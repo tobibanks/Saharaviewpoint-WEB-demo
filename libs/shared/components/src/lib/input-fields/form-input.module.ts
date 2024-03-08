@@ -10,16 +10,12 @@ import { SvpFileSelector } from "./svp-file-selector.component";
     SvpValidationErrorsComponent,
     SvpLabelComponent,
     SvpFileSelector
-    // SvpInputComponent,
-    // SvpTextAreaComponent
   ],
   exports: [
     SvpCheckboxComponent,
     SvpValidationErrorsComponent,
     SvpLabelComponent,
     SvpFileSelector
-    // SvpInputComponent,
-    // SvpTextAreaComponent
   ]
 })
 export class SvpFormInputModule {}

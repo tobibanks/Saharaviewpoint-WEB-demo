@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { ResponsiveHelperComponent } from './shared/components/responsive-helper/responsive-helper.component';
+import { ResponsiveHelperComponent } from '@svp-components';
 import { ThemeService } from './core/services/theme.service';
 import topbar from 'topbar';
 import { NxDropdownModule } from './shared/directives/nx-dropdown/nx-dropdown.module';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ import { NxDropdownModule } from './shared/directives/nx-dropdown/nx-dropdown.mo
 })
 export class AppComponent {
   title = 'Saharaviewpoint WEB';
+  environment = environment;
 
   constructor(public themeService: ThemeService) {
     this.setUpTopbarConfig();

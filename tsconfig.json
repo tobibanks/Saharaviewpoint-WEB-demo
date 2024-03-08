@@ -1,0 +1,12 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {    
+    "paths": {
+      "@svp-components": ["libs/shared/components/src/index.ts"],
+    },
+    "baseUrl": ".",
+  },
+  "angularCompilerOptions": {
+    "strictTemplates": true
+  },
+}

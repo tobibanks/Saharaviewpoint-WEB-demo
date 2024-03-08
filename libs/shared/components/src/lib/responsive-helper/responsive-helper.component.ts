@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgIf } from '@angular/common';
-import { environment } from '../../../../environments/environment.prod';
 
 @Component({
     selector: 'app-responsive-helper',
@@ -10,7 +9,7 @@ import { environment } from '../../../../environments/environment.prod';
     imports: [NgIf],
 })
 export class ResponsiveHelperComponent implements OnInit {
-  public env: any = environment;
+  @Input({required: true}) env: any = null;
 
   constructor() {}
 

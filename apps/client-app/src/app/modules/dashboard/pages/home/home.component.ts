@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularSvgIconModule } from 'angular-svg-icon';
-import { SvpButtonModule } from '../../../../shared/components/buttons/btn.module';
-import { SvpTypographyModule } from '../../../../shared/components/typography/typography.module';
+import {SvpButtonModule } from '@svp-components';
+import { SvpTypographyModule } from '../../../../../../../../libs/shared/components/src/lib/typography/typography.module';
 import { Result } from '../../../../shared/models/api-response-models/Result';
 import { ProjectModel } from '../../../../shared/models/api-response-models/project/project.model';
 import { NotificationService } from '../../../../shared/services/notification.service';
 import { ProjectService } from '../../../../shared/services/project.service';
-import { SvpUtilityModule } from '../../../../shared/components/utilities/utility.module';
+import { SvpUtilityModule } from '../../../../../../../../libs/shared/components/src/lib/utilities/utility.module';
 import { CommonModule } from '@angular/common';
 import { ProjectStatusEnum } from '../../../../shared/enums/ProjectStatusEnum';
-import { SvpDashboardCardComponent } from '../../../../shared/components/utilities/dashboard-card.component';
+import { SvpDashboardCardComponent } from '../../../../../../../../libs/shared/components/src/lib/utilities/dashboard-card.component';
 import { Router } from '@angular/router';
 
 @Component({

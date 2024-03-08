@@ -4,7 +4,7 @@ import { NavbarMobileComponent } from './navbar-mobile/navbar-mobilecomponent';
 import { ProfileMenuComponent } from './profile-menu/profile-menu.component';
 import { NavbarMenuComponent } from './navbar-menu/navbar-menu.component';
 import { AngularSvgIconModule } from 'angular-svg-icon';
-import { SvpTypographyModule } from '../../../../shared/components/typography/typography.module';
+import { SvpTypographyModule } from '../../../../../../../../libs/shared/components/src/lib/typography/typography.module';
 
 @Component({
     selector: 'app-navbar',

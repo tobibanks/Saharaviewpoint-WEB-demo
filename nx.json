@@ -4,10 +4,7 @@
   },
   "namedInputs": {
     "sharedGlobals": [],
-    "default": [
-      "{projectRoot}/**/*",
-      "sharedGlobals"
-    ],
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "production": [
       "default",
       "!{projectRoot}/tsconfig.spec.json",
@@ -17,22 +14,22 @@
   },
   "targetDefaults": {
     "build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "inputs": [
-        "production",
-        "^production"
-      ],
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"],
       "cache": true
     },
     "test": {
-      "inputs": [
-        "default",
-        "^production",
-        "{workspaceRoot}/karma.conf.js"
-      ],
+      "inputs": ["default", "^production", "{workspaceRoot}/karma.conf.js"],
       "cache": true
+    }
+  },
+  "generators": {
+    "@nx/angular:library": {
+      "linter": "none",
+      "unitTestRunner": "none"
+    },
+    "@nx/angular:component": {
+      "style": "scss"
     }
   }
 }

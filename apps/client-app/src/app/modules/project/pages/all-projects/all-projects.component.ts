@@ -1,16 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularSvgIconModule } from 'angular-svg-icon';
-import { SvpButtonModule } from '../../../../shared/components/buttons/btn.module';
-import { SvpTypographyModule } from '../../../../shared/components/typography/typography.module';
-import { SvpUtilityModule } from '../../../../shared/components/utilities/utility.module';
+import { SvpTypographyModule, SvpButtonModule } from '@svp-components';
+import { SvpUtilityModule } from '../../../../../../../../libs/shared/components/src/lib/utilities/utility.module';
 import { ProjectModel } from '../../../../shared/models/api-response-models/project/project.model';
 import { CommonModule } from '@angular/common';
 import { NotificationService } from '../../../../shared/services/notification.service';
 import { ProjectService } from '../../../../shared/services/project.service';
 import { Result } from '../../../../shared/models/api-response-models/Result';
 import { NxDropdownModule } from '../../../../shared/directives/nx-dropdown/nx-dropdown.module';
-import { ProjectSearchModel } from '../../../../shared/models/api-input-models/project/project-search.model';
-import { Subject, switchMap } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { ProjectStatusEnum } from '../../../../shared/enums/ProjectStatusEnum';
 

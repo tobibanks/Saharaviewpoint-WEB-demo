@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularSvgIconModule } from 'angular-svg-icon';
-import { SvpButtonModule } from '../../../../shared/components/buttons/btn.module';
-import { SvpTypographyModule } from '../../../../shared/components/typography/typography.module';
+import { SvpTypographyModule } from '../../../../../../../../libs/shared/components/src/lib/typography/typography.module';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { SvpFormInputModule } from '../../../../shared/components/input-fields/form-input.module';
+import { SvpFormInputModule, SvpButtonModule } from '@svp-components';
 import { CommonModule, NgFor } from '@angular/common';
 import { ProjectService } from '../../../../shared/services/project.service';
 import { ProjectTypeModel } from '../../../../shared/models/api-response-models/project/project-type.model';
@@ -11,10 +10,9 @@ import { Result } from '../../../../shared/models/api-response-models/Result';
 import { NotificationService } from '../../../../shared/services/notification.service';
 import { Observable, Subject, catchError, concat, distinctUntilChanged, map, of, switchMap, tap } from 'rxjs';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { SvpAnchorComponent } from '../../../../shared/components/utilities/svp-anchor.component';
 import { ProjectModel } from '../../../../shared/models/api-response-models/project/project.model';
 import { HttpErrorResponse } from '@angular/common/http';
-import { mapValidationErrors } from '../../../../shared/components/utilities/map-validation-errors.utility';
+import { mapValidationErrors } from '../../../../../../../../libs/shared/components/src/lib/utilities/map-validation-errors.utility';
 import { Router } from '@angular/router';
 
 @Component({
@@ -23,8 +21,7 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [
     CommonModule,
-    AngularSvgIconModule, 
-    SvpAnchorComponent,
+    AngularSvgIconModule,
     SvpButtonModule, 
     SvpTypographyModule,
     ReactiveFormsModule,
