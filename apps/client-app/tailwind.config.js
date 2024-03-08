@@ -4,7 +4,10 @@ module.exports = {
   prefix: '',
   mode: 'jit',
   important: false,
-  content: ['./apps/client-app/src/**/*.{html,ts}'],
+  content: [
+    './apps/client-app/src/**/*.{html,ts}',
+    './libs/**/!(*.spec).{ts,html}'
+  ],
   darkMode: 'class', // or 'media' or 'class'
   theme: {
     extend: {

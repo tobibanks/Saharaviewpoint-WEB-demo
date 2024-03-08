@@ -9,8 +9,8 @@
     "ng": "ng",
     "start": "nx serve",
     "client-app": "nx serve client-app",
-    "build-staging": "nx build --configuration=staging --output-path=dist/staging",
-    "build-prod": "nx build --configuration=production --output-path=dist/production",
+    "build-staging": "npx nx build --configuration=staging --output-path=dist/staging",
+    "build-prod": "npx nx build --configuration=production --output-path=dist/production",
     "watch": "nx build --watch --configuration development",
     "test": "nx test"
   },
