@@ -2,7 +2,7 @@ import { HttpRequest, HttpHandlerFn } from "@angular/common/http";
 import { inject } from "@angular/core";
 import { catchError, throwError, Observable, switchMap } from "rxjs";
 import { NotificationService } from "../../../../../../apps/client-app/src/app/shared/services/notification.service";
-import { ErrorService } from "../../../../../../apps/client-app/src/app/shared/utilities/error.server.handler";
+import { ErrorService } from "../error-handlers/error.server.handler";
 import { AuthService } from "../../../../../../apps/client-app/src/app/shared/services/auth.service";
 import { AuthDataModel } from "../../../../models/src/lib/api-response-models/auth/auth-data.model";
 import { Result } from "../../../../models/src/lib/api-response-models/Result";

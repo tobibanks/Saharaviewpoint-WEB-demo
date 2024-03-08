@@ -7,7 +7,7 @@ import {
   NgZone,
 } from '@angular/core';
 // import { Result } from '../../../../shared/models/utils/Result';
-import { Result } from '../../../../../../libs/shared/models/src/lib/api-response-models/Result';
+import { Result } from '../../../../models/src/lib/api-response-models/Result';
 
 @Injectable()
 export class GlobalErrorHandler implements ErrorHandler {
