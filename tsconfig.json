@@ -1,32 +1,17 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
-  "compilerOptions": {
-    "outDir": "./dist/out-tsc",
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "esModuleInterop": true,
-    "sourceMap": true,
-    "declaration": false,
-    "experimentalDecorators": true,
-    "moduleResolution": "node",
-    "importHelpers": true,
-    "target": "ES2022",
-    "module": "ES2022",
-    "useDefineForClassFields": false,
-    "lib": [
-      "ES2022",
-      "dom"
-    ]
+  "compilerOptions": {    
+    "paths": {
+      "@svp-components": ["libs/shared/components/src/index.ts"],
+      "@svp-directives": ["libs/shared/directives/src/index.ts"],
+      "@svp-models": ["libs/shared/models/src/index.ts"],
+      "@svp-utilities": ["libs/shared/utilities/src/index.ts"],
+      "@svp-api-services": ["libs/shared/api-services/src/index.ts"],
+      "@svp-services": ["libs/shared/services/src/index.ts"],
+    },
+    "baseUrl": ".",
   },
   "angularCompilerOptions": {
-    "enableI18nLegacyMessageIdFormat": false,
-    "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
     "strictTemplates": true
-  }
+  },
 }
