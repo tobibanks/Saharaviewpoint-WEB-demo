@@ -58,9 +58,10 @@ export class AddProjectComponent implements OnInit {
     this.projectForm = this.fb.group({
       title: ['', Validators.compose([Validators.required])],
       sizeOfSite: ['', Validators.compose([Validators.required])],
+      startDate: [null, Validators.required],
       dueDate: [null, Validators.required],
       location: ['', Validators.compose([Validators.required])],
-      description: [''],
+      description: ['', Validators.maxLength(5000)],
       type: ['', Validators.compose([Validators.required])],
       budget: [0, Validators.compose([Validators.required])],
       surroundingFacilities: [''],
@@ -150,6 +151,10 @@ export class AddProjectComponent implements OnInit {
     return formParam;
   }
 
+  get descriptionCount(): number {
+    return this.projectForm.get('description')?.value.length ?? 0;
+  }
+  
   trackByFn(item: ProjectTypeModel) {
     return item.id;
   }

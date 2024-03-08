@@ -23,32 +23,50 @@
       </div>
       
       <div class="flex space-x-3 my-4 mt-4">
-        <div svp-card-selector isActive="true">
+        <div svp-card-selector [isActive]="projectService.searchParam.status == null" (click)="projectService.filterByStatus(null)">
           <span>All Projects</span>
         </div>
   
-        <div svp-card-selector>
+        <div svp-card-selector (click)="projectService.filterByStatus(projectStatusEnum.REQUESTED)" [isActive]="projectService.searchParam.status == projectStatusEnum.REQUESTED">
           <span>Awaiting Approval</span>
         </div>
   
-        <div svp-card-selector>
+        <div svp-card-selector (click)="projectService.filterByStatus(projectStatusEnum.IN_PROGRESS)" [isActive]="projectService.searchParam.status == projectStatusEnum.IN_PROGRESS">
           <span>In Progress</span>
         </div>
   
-        <div svp-card-selector>
+        <div svp-card-selector (click)="projectService.filterByStatus(projectStatusEnum.COMPLETED)" [isActive]="projectService.searchParam.status == projectStatusEnum.COMPLETED">
           <span>Completed</span>
         </div>
       </div>
     </div>
 
     <div class="">
-      <svp-search-button svpPlaceholder="Search projects" displaySearchButton="false" widthClass="w-80" (onChange)="this.searchParams.searchQuery = $event" (onSearch)="searchProjects($event)" />
+      <svp-search-button svpPlaceholder="Search projects" displaySearchButton="true" widthClass="w-80" (onChange)="projectService.searchParam.searchQuery = $event" (onSearch)="projectService.searchProjects($event)" />
       
+      <div class="flex space-x-3 mb-4 mt-6">
+        <svg-icon src="assets/icons/appicons/bi_filter.svg" [svgClass]="'h-6 w-6 text-gray-800 dark:text-night-200'"/>
+
+        <p svp-text>Filter by date</p>
+      </div>
+      
+      <div class="flex space-x-4 my-4 text-gray-800 dark:text-night-700">
+        <div class="flex flex-col space-y-2">
+          <p svp-text>Start Date</p>
+
+          <input type="date" [(ngModel)]="projectService.searchParam.startDueDate" (change)="projectService.triggerFilterChange()"/>
+        </div>
+        
+        <div class="flex flex-col space-y-2">
+          <p svp-text>End Date</p>
+
+          <input type="date" [(ngModel)]="projectService.searchParam.endDueDate" (change)="projectService.triggerFilterChange()"/>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- Second Div with Large Container -->
-  @if(allProjects.length < 0) {
+  @if(allProjects == null) {
     <div class="mt-6 min-h-80 py-8 px-4 rounded-xl bg-white dark:bg-night-700">
       <div class="flex flex-col space-y-4 items-center justify-center">
         <svg-icon src="assets/icons/appicons/empty-project.svg" [svgClass]="'h-64 w-64'"/>
@@ -66,7 +84,7 @@
     </div>
   }
   @else {
-    <div class="mt-6 min-h-80 py-8 px-4 rounded-xl bg-white dark:bg-night-700">
+    <div class="mt-6 min-h-80 py-8 px-14 rounded-xl bg-white dark:bg-night-700">
       <div class="text-end mb-8">
         <a svp-neutral type="button" svpRoute="/project/new">Add new project</a>
       </div>
@@ -76,21 +94,28 @@
           <table class="fixed-header header-1 bordered">
             <thead>
               <tr>
-                <th><span>#</span></th>
-                <th><span>Title</span></th>
+                <th width="5%"><span>#</span></th>
+                <th width="30%"><span>PROJECT NAME</span></th>
+                <th><span>PROJECT MANAGER</span></th>
                 <th><span>Status</span></th>
                 <th><span>Start Date</span></th>
-                <!-- <th><span>End Date</span></th> -->
-                <th><span>Actions</span></th>
+                <th><span>End Date</span></th>
+                <!-- <th><span>Actions</span></th> -->
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let project of allProjects; let index = index">
                 <td><span>{{ index + 1 }}</span></td>
                 <td><span>{{ project.title }}</span></td>
-                <td><span>{{ project.status }}</span></td>
-                <td><span>{{ project.dueDate | date:'dd/MM/yyyy' }}</span></td>
+                <td><span>{{ project.assignee ? project.assignee.fullName : 'N/A' }}</span></td>
                 <td>
+                  <span>
+                    <svp-status-card [status]="project.status" />
+                  </span>
+                </td>
+                <td><span>{{ project.startDate | date:'dd/MM/yyyy' }}</span></td>
+                <td><span>{{ project.dueDate | date:'dd/MM/yyyy' }}</span></td>
+                <!-- <td>
                   <div class="nx-dropdown" x-dropdown container="body" tabindex="0">
                     <a (click)="(false)" class="btn btn-action">
                       <i class="bx bx-dots-vertical-rounded"></i>
@@ -110,12 +135,12 @@
                       </ul>
                     </div>
                   </div>
-                </td>
+                </td> -->
               </tr>
             </tbody>
           </table>
         </div>
       </div>
     </div>
-  }  
+  }
 </div> 

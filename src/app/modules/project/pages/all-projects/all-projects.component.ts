@@ -10,6 +10,9 @@ import { ProjectService } from '../../../../shared/services/project.service';
 import { Result } from '../../../../shared/models/api-response-models/Result';
 import { NxDropdownModule } from '../../../../shared/directives/nx-dropdown/nx-dropdown.module';
 import { ProjectSearchModel } from '../../../../shared/models/api-input-models/project/project-search.model';
+import { Subject, switchMap } from 'rxjs';
+import { FormsModule } from '@angular/forms';
+import { ProjectStatusEnum } from '../../../../shared/enums/ProjectStatusEnum';
 
 @Component({
   selector: 'app-all-projects',
@@ -19,41 +22,46 @@ import { ProjectSearchModel } from '../../../../shared/models/api-input-models/p
     AngularSvgIconModule,
     SvpButtonModule,
     SvpTypographyModule,
-    SvpUtilityModule, CommonModule, NxDropdownModule
+    SvpUtilityModule, CommonModule, NxDropdownModule,
+    FormsModule
   ],
 })
 export class AllProjectsComponent implements OnInit {
-
-  searchParams = new ProjectSearchModel();
+  projectStatusEnum = ProjectStatusEnum;
 
     // TODO: initialize allProjects as an empty array
-  allProjects: ProjectModel[] = //[];
-  [
-    {
-      id: 1,
-      title: 'First Project',
-      description: 'Just another sample description',
-      status: 'Pending',
-      dueDate: new Date(),
-      isPriority: true,
-      order: 1,
-    },
-    {
-      id: 2,
-      title: 'Second Project',
-      description: 'Just another sample description',
-      status: 'Pending',
-      dueDate: new Date(),
-      isPriority: false,
-      order: 2,
-      
-    }
-  ];
+  allProjects: ProjectModel[] | null = [];
+  // [
+  //   {
+  //     id: 1,
+  //     title: 'First Project',
+  //     description: 'Just another sample description',
+  //     status: 'InProgress',
+  //     dueDate: new Date(),
+  //     startDate: new Date(),
+  //     isPriority: true,
+  //     order: 1,
+  //   },
+  //   {
+  //     id: 2,
+  //     title: 'Second Project',
+  //     description: 'Just another sample description',
+  //     status: 'Completed',
+  //     startDate: new Date(),
+  //     dueDate: new Date(),
+  //     isPriority: false,
+  //     order: 2,
+  //   }
+  // ];
   
   constructor(
-    private projectService: ProjectService,
+    public projectService: ProjectService,
     private notify: NotificationService
-  ) {}
+  ) {
+    this.projectService.allProjects.subscribe((projects: ProjectModel[]) => {
+      this.allProjects = projects;
+    });
+  }
 
   ngOnInit(): void {
     this.loadProjects(); // TODO: uncomment this line
@@ -63,25 +71,6 @@ export class AllProjectsComponent implements OnInit {
     this.notify.showLoader();
 
     this.projectService.listProjects().subscribe(
-      async (res: Result<ProjectModel[]>) => {
-        this.notify.hideLoader();
-
-        if (res.success) {
-          this.allProjects = res.content ?? [];
-        } 
-        else {
-          this.notify.timedErrorMessage(res.title, res.message);
-        }
-      }
-    );
-  }
-
-  searchProjects(searchTerm: string): void {
-    this.searchParams.searchQuery = searchTerm;
-    
-    
-    this.notify.showLoader();    
-    this.projectService.listProjects(this.searchParams).subscribe(
       async (res: Result<ProjectModel[]>) => {
         this.notify.hideLoader();
 

@@ -3,6 +3,7 @@ export interface ProjectModel {
   title: string;
   description: string;
   status: string;
+  startDate: Date;
   dueDate: Date;
   isPriority: boolean;
   order: number;
@@ -11,8 +12,12 @@ export interface ProjectModel {
   createdBy?: ProjectUserModel;
 }
 
-export interface ProjectUserModel {
-  id: number;
-  firstName: string;
-  lastName: string;
+export class ProjectUserModel {
+  id!: number;
+  firstName!: string;
+  lastName!: string;
+
+  get fullName(): string {
+    return `${this.firstName} ${this.lastName}`;
+  }
 }

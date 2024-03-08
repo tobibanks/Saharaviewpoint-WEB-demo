@@ -56,8 +56,7 @@
         td {
           transition: all 0.3s ease;
           vertical-align: middle;
-          padding: 1rem;
-          // font-size: 0.9rem;
+          padding: .3rem 1rem;
           span {
             @apply text-gray-800 dark:text-night-200;
             overflow: hidden;

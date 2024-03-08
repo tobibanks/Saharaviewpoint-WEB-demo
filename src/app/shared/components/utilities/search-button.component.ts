@@ -49,12 +49,14 @@ export class SvpSearchButtonComponent {
     this.onSearch.emit(this.searchTerm);
   }
 
-  handleOnKeyUp(e: any): void {    
-    if (e.key === 'Enter' && this.searchTerm.length > 0) {
+  handleOnKeyUp(e: any): void {
+    // if the Enter key is pressed, emit the search event
+    if (e.key === 'Enter') {
       this.onSearch.emit(this.searchTerm);
     }
 
-    if (this.searchTerm.length < this.minLetters) 
+    // if the search term is less than the minimum letters, don't emit the search event
+    if (this.searchTerm.length != 0 && this.searchTerm.length < this.minLetters) 
       return;
 
     this.onSearch.emit(this.searchTerm);
