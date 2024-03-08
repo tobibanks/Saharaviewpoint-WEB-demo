@@ -1,6 +1,6 @@
 import { HttpRequest, HttpHandlerFn } from "@angular/common/http";
 import { inject } from "@angular/core";
-import { StorageService } from "../services/storage.service";
+import { StorageService } from "../../../../../../apps/client-app/src/app/shared/services/storage.service";
 
 export function authInterceptor(request: HttpRequest<unknown>, next: HttpHandlerFn) {
   // Inject the current `AuthService` and use it to get an authentication token:

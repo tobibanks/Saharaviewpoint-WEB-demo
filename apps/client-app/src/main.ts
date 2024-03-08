@@ -6,9 +6,7 @@ import { AppRoutingModule } from './app/app-routing.module';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { enableProdMode, importProvidersFrom } from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { baseUrlInterceptor } from './app/shared/interceptors/base-url.inteceptor';
-import { authInterceptor } from './app/shared/interceptors/auth.interceptor';
-import { errorHandlerInterceptor } from './app/shared/interceptors/error-handler.interceptor';
+import { baseUrlInterceptor, authInterceptor, errorHandlerInterceptor } from '@svp-utilities';
 
 if (environment.production || environment.staging) {
   enableProdMode()

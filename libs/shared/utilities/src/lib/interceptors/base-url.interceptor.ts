@@ -1,5 +1,5 @@
 import { HttpRequest, HttpHandlerFn } from "@angular/common/http";
-import { environment } from "../../../environments/environment";
+import { environment } from "../../../../../../apps/client-app/src/environments/environment";
 
 export function baseUrlInterceptor(request: HttpRequest<unknown>, next: HttpHandlerFn) {
   const BASE_PATH = environment.apiUrl;
