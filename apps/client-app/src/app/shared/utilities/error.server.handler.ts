@@ -4,7 +4,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NotificationService } from '../services/notification.service';
 import { NavigationUtility } from './navigation.utility';
-import { Result } from '../models/api-response-models/Result';
+import { Result } from '../../../../../../libs/shared/models/src/lib/api-response-models/Result';
 
 @Injectable({
   providedIn: 'root',

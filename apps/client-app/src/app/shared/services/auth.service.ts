@@ -1,15 +1,14 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
-import { ClientRegisterModel } from "../models/api-input-models/auth/client.register.model";
+import { ClientRegisterModel } from "../models/api-input-models/client.register.model";
 import { Router } from "@angular/router";
 import { NotificationService } from "./notification.service";
 import { StorageService } from "./storage.service";
-import { Result } from "../models/api-response-models/Result";
-import { AuthDataModel } from "../models/api-response-models/auth/auth-data.model";
-import { LoginModel } from "../models/api-input-models/auth/login.model";
-import { AuthRoleData } from "../models/utils/AuthRoleData";
-import { RoleEnum } from "../enums/RoleEnum";
+import { Result } from "../../../../../../libs/shared/models/src/lib/api-response-models/Result";
+import { AuthDataModel } from "../../../../../../libs/shared/models/src/lib/api-response-models/auth/auth-data.model";
+import { LoginModel } from "../../../../../../libs/shared/models/src/lib/api-input-models/auth/login.model";
+import { AuthRoleData } from "@svp-models";
 
 @Injectable({
   providedIn: 'root'

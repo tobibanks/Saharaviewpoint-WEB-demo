@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject, switchMap } from 'rxjs';
-import { Result } from '../models/api-response-models/Result';
-import { ProjectTypeModel } from '../models/api-response-models/project/project-type.model';
-import { ProjectModel } from '../models/api-response-models/project/project.model';
-import { ProjectSearchModel } from '../models/api-input-models/project/project-search.model';
+import { Result } from '../../../../../../libs/shared/models/src/lib/api-response-models/Result';
+import { ProjectTypeModel } from '../../../../../../libs/shared/models/src/lib/api-response-models/project/project-type.model';
+import { ProjectModel } from '../../../../../../libs/shared/models/src/lib/api-response-models/project/project.model';
+import { ProjectSearchModel } from '../../../../../../libs/shared/models/src/lib/api-input-models/project/project-search.model';
 import { ProjectStatusEnum } from '../enums/ProjectStatusEnum';
 import { NotificationService } from './notification.service';
 

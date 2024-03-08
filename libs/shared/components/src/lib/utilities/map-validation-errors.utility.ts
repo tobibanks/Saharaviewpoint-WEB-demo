@@ -1,5 +1,5 @@
 import { FormGroup } from "@angular/forms";
-import { ValidationErrorModel } from "../../../../../../apps/client-app/src/app/shared/models/utils/ValidationErrorModel";
+import { ValidationErrorModel } from "@svp-models";
 
 export function mapValidationErrors(form: FormGroup, errors: { [key: string]: string[]} | undefined) {
   if (!errors) {

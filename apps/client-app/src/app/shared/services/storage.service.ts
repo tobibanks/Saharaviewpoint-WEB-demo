@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LocalStorageUtility } from '../utilities/local-storage.utility';
-import { UserModel } from '../models/api-response-models/user.model';
-import { AuthRoleData } from '../models/utils/AuthRoleData';
+import { UserModel } from '../../../../../../libs/shared/models/src/lib/api-response-models/user.model';
+import { AuthRoleData } from '@svp-models';
 import { SessionStorageUtility } from '../utilities/session-storage.utility';
 
 @Injectable({

@@ -4,8 +4,8 @@ import { catchError, throwError, Observable, switchMap } from "rxjs";
 import { NotificationService } from "../services/notification.service";
 import { ErrorService } from "../utilities/error.server.handler";
 import { AuthService } from "../services/auth.service";
-import { AuthDataModel } from "../models/api-response-models/auth/auth-data.model";
-import { Result } from "../models/api-response-models/Result";
+import { AuthDataModel } from "../../../../../../libs/shared/models/src/lib/api-response-models/auth/auth-data.model";
+import { Result } from "../../../../../../libs/shared/models/src/lib/api-response-models/Result";
 import { Router } from "@angular/router";
 import { StorageService } from "../services/storage.service";
 

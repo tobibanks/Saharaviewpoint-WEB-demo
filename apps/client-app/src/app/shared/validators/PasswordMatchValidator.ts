@@ -1,5 +1,5 @@
 import { FormGroup } from "@angular/forms";
-import { ValidationErrorModel } from "../models/utils/ValidationErrorModel";
+import { ValidationErrorModel } from "@svp-models";
 
 export function passwordMatchValidator(controlName: string, matchingControlName: string) {
   return (group: FormGroup) => {
