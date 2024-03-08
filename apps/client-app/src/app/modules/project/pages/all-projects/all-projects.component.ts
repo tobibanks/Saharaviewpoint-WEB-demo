@@ -7,11 +7,11 @@ import { CommonModule } from '@angular/common';
 import { NotificationService } from '../../../../shared/services/notification.service';
 import { ProjectService } from '../../../../shared/services/project.service';
 import { Result } from '../../../../shared/models/api-response-models/Result';
-import { NxDropdownModule } from '../../../../shared/directives/nx-dropdown/nx-dropdown.module';
+import { NxDropdownModule } from '@svp-directives';
 import { FormsModule } from '@angular/forms';
 import { ProjectStatusEnum } from '../../../../shared/enums/ProjectStatusEnum';
 
-@Component({
+@Component({ 
   selector: 'app-all-projects',
   templateUrl: './all-projects.component.html',
   standalone: true,

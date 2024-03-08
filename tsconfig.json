@@ -3,6 +3,7 @@
   "compilerOptions": {    
     "paths": {
       "@svp-components": ["libs/shared/components/src/index.ts"],
+      "@svp-directives": ["libs/shared/directives/src/index.ts"],
     },
     "baseUrl": ".",
   },

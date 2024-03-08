@@ -21,9 +21,6 @@
     "lib": ["ES2022", "dom"],
     "baseUrl": ".",
     "rootDir": ".",
-    "paths": {
-      "svp-animations": ["libs/shared/animations/src/index.ts"]
-    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

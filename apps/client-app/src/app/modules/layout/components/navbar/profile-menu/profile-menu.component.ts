@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgClass } from '@angular/common';
-import { ClickOutsideDirective } from '../../../../../shared/directives/click-outside.directive';
+import { ClickOutsideDirective } from '@svp-directives';
 import { AuthService } from '../../../../../shared/services/auth.service';
 import { StorageService } from '../../../../../shared/services/storage.service';
 import { UserModel } from '../../../../../shared/models/api-response-models/user.model';

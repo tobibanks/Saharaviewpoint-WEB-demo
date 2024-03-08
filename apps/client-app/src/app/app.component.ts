@@ -4,7 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { ResponsiveHelperComponent } from '@svp-components';
 import { ThemeService } from './core/services/theme.service';
 import topbar from 'topbar';
-import { NxDropdownModule } from './shared/directives/nx-dropdown/nx-dropdown.module';
+import { NxDropdownModule } from '@svp-directives';
 import { environment } from '../environments/environment';
 
 @Component({
