@@ -32,7 +32,7 @@ export class AllProjectsComponent implements OnInit {
   allProjects: ProjectModel[] | null = // [];
   [
     {
-      id: 71,
+      id: 7,
       title: 'First Project',
       description: 'Just another sample description',
       status: 'In Progress',
@@ -78,7 +78,6 @@ export class AllProjectsComponent implements OnInit {
     private notify: NotificationService,
     private sideViewComponent: SideViewComponent, private side: SideViewService
   ) {
-
     // set up project search
     this.projectService.allProjects.subscribe((projects: ProjectModel[]) => {
       this.allProjects = projects;
@@ -86,8 +85,8 @@ export class AllProjectsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const tt = 2; // TODO: remove this line
     // this.loadProjects(); // TODO: uncomment this line
+    this.sideViewService.showComponent(ApproveProjectComponent, {id: 1}); // TODO: remove this line
   }
 
   loadProjects(): void {
@@ -107,13 +106,8 @@ export class AllProjectsComponent implements OnInit {
     );
   }
 
-  viewProjectDetails(): void {
-    // this.sample.clear();
-    
-    // this.sideViewComponent.loadComponent(ApproveProjectComponent);
-    // this.side.openSideView(ApproveProjectComponent);
-
-    this.sideViewService.showComponent(ApproveProjectComponent);
-    // this.showSideView = true;
+  viewProjectDetails(id: number): void {
+    const inputs = {id: id};
+    this.sideViewService.showComponent(ApproveProjectComponent, inputs);
   }
 }

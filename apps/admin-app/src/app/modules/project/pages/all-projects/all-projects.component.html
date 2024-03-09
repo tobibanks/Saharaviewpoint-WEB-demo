@@ -5,7 +5,7 @@
         <div class="align-middle">
           <h2 svp-subHeader>View</h2>
         </div>
-            
+      
         <div svp-card-selector>
           <svg-icon src="assets/icons/appicons/bar-chart.svg" [svgClass]="'h-4 h-4'"/>
           <span>Board</span>
@@ -106,7 +106,7 @@
             <tbody>
               <tr *ngFor="let project of allProjects; let index = index">
                 <td><span>{{ index + 1 }}</span></td>
-                <td class="cursor-pointer clickable" (click)="viewProjectDetails()"><span>{{ project.title }}</span></td>
+                <td class="cursor-pointer clickable" (click)="viewProjectDetails(project.id)"><span>{{ project.title }}</span></td>
                 <td><span>{{ project.assignee ? project.assignee.fullName : 'N/A' }}</span></td>
                 <td>
                   <span>

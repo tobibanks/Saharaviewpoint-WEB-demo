@@ -1,6 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { Component, Injectable, inject } from "@angular/core";
 import { SideViewService } from "./side-view.service";
+import { DynamicComponent, ComponentOutletInjectorModule } from 'ng-dynamic-component';
 
 @Injectable({ providedIn: 'root' })
 @Component({
@@ -8,18 +9,8 @@ import { SideViewService } from "./side-view.service";
   standalone: true,
   templateUrl: './side-view.component.html',
   styleUrls: ['./side-view.component.scss'],
-  imports: [CommonModule],
+  imports: [CommonModule, ComponentOutletInjectorModule],
 })
 export class SideViewComponent  {
   sideViewService = inject(SideViewService);
-  isActive = inject(SideViewService).isActive;
-
-  get component() {
-    console.log('--> Getting component: ', this.sideViewService.getComponent())
-    return this.sideViewService.getComponent();
-  }
-  
-  closeSideView() {
-    this.sideViewService.closeSideView();
-  }
 }

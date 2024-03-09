@@ -37,6 +37,7 @@
     "boxicons": "^2.1.4",
     "izitoast": "^1.4.0",
     "ng-apexcharts": "^1.7.1",
+    "ng-dynamic-component": "^10.7.0",
     "rxjs": "~7.8.0",
     "sweetalert2": "^11.10.4",
     "topbar": "^2.0.2",
