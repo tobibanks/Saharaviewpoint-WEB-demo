@@ -2,23 +2,23 @@
   <div class="flex space-x-6 mt-8">
     <!-- Card 1 -->
     <div class="flex-1" (click)="navigateTo('project/new')">
-      <svp-dashboard-card icon="assets/icons/appicons/project.svg" [title]="'Projects'" [description]="'You have ' + projectCount + ' projects'" />
+      <svp-dashboard-card icon="assets/icons/appicons/project.svg" [title]="'Projects'" [description]="'There are ' + projectCount + ' total projects'" />
     </div>
 
     <!-- Card 2 -->
     <div class="flex-1">
-      <svp-dashboard-card icon="assets/icons/appicons/project-outlined.svg" [title]="'Tasks'" [description]="'You have ' + allTasks + ' pending tasks'" />
+      <svp-dashboard-card icon="assets/icons/appicons/project-outlined.svg" [title]="'Tasks'" [description]="'There are ' + allTasks + ' pending tasks'" />
     </div>
 
     <!-- Card 3 -->
     <div class="flex-1">
-      <svp-dashboard-card icon="assets/icons/appicons/chart.svg" [title]="'Reports'" [description]="'You have ' + allReports + ' new reports'" />
+      <svp-dashboard-card icon="assets/icons/appicons/chart.svg" [title]="'Reports'" [description]="'There are ' + allReports + ' new reports'" />
     </div>
 
     <!-- Card 4 -->
-    <div class="flex-1">
-      <svp-dashboard-card icon="assets/icons/appicons/message-outline.svg" [title]="'Messages'" [description]="'You have ' + newMessages + ' new messages'" />
-    </div>
+    <!-- <div class="flex-1">
+      <svp-dashboard-card icon="assets/icons/appicons/message-outline.svg" [title]="'Messages'" [description]="'There are ' + newMessages + ' new messages'" />
+    </div> -->
   </div>
 
   @if(allProjects == null) {

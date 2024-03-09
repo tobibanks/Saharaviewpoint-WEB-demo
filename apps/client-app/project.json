@@ -23,11 +23,16 @@
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/client-app/src/favicon.ico",
-          "apps/client-app/src/assets"
+          "apps/client-app/src/assets",
+          {
+            "input": "libs/shared/assets/src/lib",
+            "glob": "**/*",
+            "output": "assets"
+          }
         ],
         "styles": [
           "node_modules/izitoast/dist/css/iziToast.min.css",
-          "apps/client-app/src/styles.scss"
+          "libs/shared/assets/src/lib/styles.scss"
         ],
         "scripts": [
           "node_modules/apexcharts/dist/apexcharts.min.js",

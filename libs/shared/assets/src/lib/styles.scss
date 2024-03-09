@@ -5,9 +5,9 @@
 @import 'tailwindcss/utilities';
 
 @import "boxicons";
-
-@import "./assets/styles/ng-select.scss";
-@import "./assets/styles/table.scss";
+;
+@import "./styles/ng-select.scss";
+@import "./styles/table.scss";
 
 @layer base {
 	[type='text'],
@@ -85,4 +85,4 @@
 
 
 /** Plugins **/
-@import './assets/styles/apexchart.scss';
+@import "./styles/apexchart.scss";

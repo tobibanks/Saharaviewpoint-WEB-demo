@@ -18,9 +18,17 @@
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/admin-app/src/favicon.ico",
-          "apps/admin-app/src/assets"
+          "apps/admin-app/src/assets",
+          {
+            "input": "libs/shared/assets/src/lib",
+            "glob": "**/*",
+            "output": "assets"
+          }
         ],
-        "styles": ["apps/admin-app/src/styles.scss"],
+        "styles": [
+          "node_modules/izitoast/dist/css/iziToast.min.css",
+          "libs/shared/assets/src/lib/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
