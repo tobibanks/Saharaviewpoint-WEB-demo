@@ -1,8 +1,8 @@
 <div class="base"
   [ngClass]="{
-    active: true
+    active: sideViewService.isActive
   }">
-  <!-- <svp-side-view-content /> -->
+
   <ng-container *ngComponentOutlet="sideViewService.component;
                   ndcDynamicInputs: sideViewService.inputs
                   ndcDynamicOutputs: sideViewService.outputs"></ng-container>

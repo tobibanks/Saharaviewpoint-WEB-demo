@@ -9,7 +9,6 @@ import { ThemeService } from '@svp-services';
 @Component({
     selector: 'app-sidebar',
     templateUrl: './sidebar.component.html',
-    styleUrls: ['./sidebar.component.scss'],
     standalone: true,
     imports: [
         NgClass,
