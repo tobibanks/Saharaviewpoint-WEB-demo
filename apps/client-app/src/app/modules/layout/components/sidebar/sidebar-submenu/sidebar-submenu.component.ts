@@ -3,7 +3,7 @@ import { MenuService } from '../../../services/menu.service';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { RouterLinkActive, RouterLink } from '@angular/router';
 import { NgClass, NgFor, NgTemplateOutlet } from '@angular/common';
-import { SubMenuItem } from '../../../../../core/models/menu.model';
+import { SubMenuItem } from '@svp-models';
 
 @Component({
     selector: 'app-sidebar-submenu',

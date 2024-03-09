@@ -1,3 +1,5 @@
+export * from './lib/core/menu.model';
+
 export * from './lib/api-input-models/auth/login.model';
 export * from './lib/api-input-models/project/project-search.model';
 
