@@ -57,8 +57,8 @@
           transition: all 0.3s ease;
           vertical-align: middle;
           padding: .3rem 1rem;
+          @apply text-gray-800 dark:text-night-200;
           span {
-            @apply text-gray-800 dark:text-night-200;
             overflow: hidden;
             text-overflow: ellipsis;
             display: flex;
@@ -77,7 +77,10 @@
                 top: 1px;
               }
             }
-          }
+          }          
+        }
+        td.clickable {
+          @apply text-blue-600 hover:underline hover:text-blue-700;
         }
       }
       tr:hover {

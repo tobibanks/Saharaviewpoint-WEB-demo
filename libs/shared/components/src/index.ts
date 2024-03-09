@@ -7,3 +7,6 @@ export * from './lib/utilities/dashboard-card.component';
 
 export * from './lib/utilities/map-validation-errors.utility';
 export * from './lib/validators/PasswordMatchValidator';
+
+export * from './lib/side-view/side-view.service';
+export * from './lib/side-view/side-view.component';
