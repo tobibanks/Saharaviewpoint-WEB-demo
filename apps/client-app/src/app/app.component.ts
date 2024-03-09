@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { ResponsiveHelperComponent } from '@svp-components';
-import { ThemeService } from '../../../../libs/shared/services/src/lib/theme/theme.service';
+import { ThemeService } from '@svp-services';
 import topbar from 'topbar';
 import { NxDropdownModule } from '@svp-directives';
 import { environment } from '../environments/environment';

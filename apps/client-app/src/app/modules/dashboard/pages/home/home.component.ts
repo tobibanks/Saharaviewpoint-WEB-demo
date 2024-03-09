@@ -4,7 +4,7 @@ import {SvpButtonModule, SvpDashboardCardComponent, SvpTypographyModule, SvpUtil
 import { CommonModule } from '@angular/common';
 import { ProjectModel, ProjectStatusEnum, Result } from '@svp-models';
 import { Router } from '@angular/router';
-import { ProjectService } from 'libs/shared/api-services/src/lib/project.service';
+import { ProjectService } from '@svp-api-services';
 import { NotificationService } from '@svp-services';
 
 @Component({

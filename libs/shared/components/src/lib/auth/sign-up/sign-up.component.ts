@@ -7,8 +7,7 @@ import { SvpButtonModule, SvpFormInputModule, SvpUtilityModule, passwordMatchVal
 import { SvpAuthInputComponent } from '../auth-input.component';
 import { Result, AuthDataModel } from '@svp-models';
 import { NotificationService } from '@svp-services';
-import { ClientRegisterModel } from 'apps/client-app/src/app/shared/models/api-input-models/client.register.model';
-import { AuthService } from 'libs/shared/api-services/src/lib/auth.service';
+import { AuthService } from '@svp-api-services';
 
 @Component({
     selector: 'app-sign-up',
@@ -33,7 +32,7 @@ export class SignUpComponent implements OnInit {
   
   returnUrl!: string;
 
-  registerClient!: ClientRegisterModel;
+  registerClient!: any;
 
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,

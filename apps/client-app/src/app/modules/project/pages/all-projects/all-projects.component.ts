@@ -6,7 +6,7 @@ import { NxDropdownModule } from '@svp-directives';
 import { FormsModule } from '@angular/forms';
 import { ProjectModel, ProjectStatusEnum, Result } from '@svp-models';
 import { NotificationService } from '@svp-services';
-import { ProjectService } from 'libs/shared/api-services/src/lib/project.service';
+import { ProjectService } from '@svp-api-services';
 
 @Component({ 
   selector: 'app-all-projects',

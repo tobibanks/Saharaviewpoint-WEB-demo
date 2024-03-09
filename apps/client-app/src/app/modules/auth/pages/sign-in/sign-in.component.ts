@@ -7,7 +7,7 @@ import { SvpAuthInputComponent } from "../../components/auth-input.component";
 import { SvpButtonModule, SvpFormInputModule, SvpUtilityModule } from '@svp-components';
 import { LoginModel, Result, AuthDataModel } from "@svp-models";
 import { NotificationService } from "@svp-services";
-import { AuthService } from "libs/shared/api-services/src/lib/auth.service";
+import { AuthService } from "@svp-api-services";
 
 
 @Component({

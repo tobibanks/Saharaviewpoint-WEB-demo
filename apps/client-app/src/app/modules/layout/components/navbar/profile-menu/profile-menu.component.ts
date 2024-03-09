@@ -4,7 +4,7 @@ import { NgClass } from '@angular/common';
 import { ClickOutsideDirective } from '@svp-directives';
 import { UserModel } from '@svp-models';
 import { StorageService } from '@svp-services';
-import { AuthService } from 'libs/shared/api-services/src/lib/auth.service';
+import { AuthService } from '@svp-api-services';
 
 @Component({
     selector: 'app-profile-menu',

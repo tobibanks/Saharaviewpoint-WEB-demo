@@ -8,7 +8,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { Router } from '@angular/router';
 import { ProjectTypeModel, Result, ProjectModel } from '@svp-models';
 import { NotificationService } from '@svp-services';
-import { ProjectService } from 'libs/shared/api-services/src/lib/project.service';
+import { ProjectService } from '@svp-api-services';
 
 @Component({
   selector: 'app-add-project',
