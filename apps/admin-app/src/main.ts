@@ -3,7 +3,8 @@ import { AppRoutingModule } from './app/app-routing.module';
 import { AppComponent } from './app/app.component';
 import { enableProdMode, importProvidersFrom } from '@angular/core';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { environment } from './environments/environment';
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import { environment } from '../../../libs/shared/environments/environment';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { baseUrlInterceptor, authInterceptor, errorHandlerInterceptor } from '@svp-utilities';
 

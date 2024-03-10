@@ -1,7 +1,8 @@
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
-import { environment } from './environments/environment';
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import { environment } from '../../../libs/shared/environments/environment';
 import { AppRoutingModule } from './app/app-routing.module';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { enableProdMode, importProvidersFrom } from '@angular/core';

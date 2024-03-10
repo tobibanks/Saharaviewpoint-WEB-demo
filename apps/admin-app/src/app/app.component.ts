@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ResponsiveHelperComponent } from '@svp-components';
 import { NxDropdownModule } from '@svp-directives';
-import { environment } from '../environments/environment';
+import { environment } from '../../../../libs/shared/environments/environment';
 import { ThemeService } from '@svp-services';
 import topbar from 'topbar';
 
