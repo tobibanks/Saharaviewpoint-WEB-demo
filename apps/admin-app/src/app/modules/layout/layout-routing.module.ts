@@ -18,9 +18,9 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'project-managers',
+    path: 'users',
     component: LayoutComponent,
-    loadChildren: () => import('../project-managers/project-managers.module').then((m) => m.ProjectManagersModule),
+    loadChildren: () => import('../users/users.module').then((m) => m.UsersModule),
     canActivate: [AuthGuard]
   },
   { path: '**', redirectTo: 'error/404' },
