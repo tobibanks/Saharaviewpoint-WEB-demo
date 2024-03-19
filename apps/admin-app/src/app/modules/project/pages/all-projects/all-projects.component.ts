@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ViewContainerRef, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { SvpTypographyModule, SvpButtonModule, SvpUtilityModule, SideViewComponent, SideViewService } from '@svp-components';
 import { CommonModule } from '@angular/common';
@@ -23,7 +23,6 @@ import { ApproveProjectComponent } from '../../components/approve-project.compon
   ],
 })
 export class AllProjectsComponent implements OnInit {
-  @ViewChild('sample', { static: true, read: ViewContainerRef }) sample!: ViewContainerRef;
   projectStatusEnum = new ProjectStatusEnum();
   showSideView = false;
   sideViewService = inject(SideViewService);
@@ -85,7 +84,7 @@ export class AllProjectsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.loadProjects(); // TODO: uncomment this line
+    this.loadProjects(); // TODO: uncomment this line
     this.sideViewService.showComponent(ApproveProjectComponent, {id: 1}); // TODO: remove this line
   }
 

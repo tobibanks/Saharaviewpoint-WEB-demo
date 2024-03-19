@@ -19,6 +19,22 @@ export class Menu {
       ],
     },
     {
+      group: 'Management',
+      separator: false,
+      items: [
+        {
+          icon: 'assets/icons/heroicons/outline/chart-pie.svg',
+          label: 'All Users',
+          route: '/all-users'
+        },
+        {
+          icon: 'assets/icons/heroicons/outline/chart-pie.svg',
+          label: 'Project Managers',
+          route: '/project-managers',
+        },
+      ],
+    },
+    {
       group: 'Config',
       separator: false,
       items: [

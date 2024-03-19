@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { LocalStorageUtility } from '../../../utilities/src/lib/local-storage.utility';
-import { UserModel } from '../../../models/src/lib/api-response-models/user.model';
+import { LocalStorageUtility } from '@svp-utilities';
+import { UserModel } from '@svp-models';
 import { AuthRoleData } from '@svp-models';
-import { SessionStorageUtility } from '../../../utilities/src/lib/session-storage.utility';
+import { SessionStorageUtility } from '@svp-utilities';
 
 @Injectable({
   providedIn: 'root',

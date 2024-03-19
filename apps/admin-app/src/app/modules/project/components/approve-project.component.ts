@@ -1,7 +1,8 @@
 import { CommonModule } from "@angular/common";
 import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { SvpButtonModule, SvpTypographyModule, SvpUtilityModule } from "@svp-components";
+import { SvpButtonModule, SvpFormInputModule, SvpTypographyModule, SvpUtilityModule } from "@svp-components";
 import { AngularSvgIconModule } from "angular-svg-icon";
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @Component({
   selector: 'svp-approve-project',
@@ -11,7 +12,8 @@ import { AngularSvgIconModule } from "angular-svg-icon";
     CommonModule,
     SvpUtilityModule,
     SvpTypographyModule,
-    AngularSvgIconModule
+    AngularSvgIconModule, SvpFormInputModule,
+    NgSelectModule
   ],
   templateUrl: './approve-project.component.html'
 })

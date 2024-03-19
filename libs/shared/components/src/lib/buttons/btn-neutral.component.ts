@@ -24,7 +24,6 @@ import { Component, Input, booleanAttribute } from '@angular/core';
   `]
 })
 export class SvpNeutralButtonComponent {
-  // @Input({required: true}) text!: string;
   @Input() icon!: string;
   @Input({transform: booleanAttribute}) isFullWidth!: boolean;
 }

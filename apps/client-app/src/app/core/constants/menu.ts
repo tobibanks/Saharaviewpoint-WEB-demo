@@ -1,4 +1,4 @@
-import { MenuItem } from '../models/menu.model';
+import { MenuItem } from '@svp-models';
 
 export class Menu {
   public static pages: MenuItem[] = [

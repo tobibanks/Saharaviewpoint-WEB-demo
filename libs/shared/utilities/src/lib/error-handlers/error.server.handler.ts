@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { NotificationService } from '../../../../services/src/lib/notification.service';
+import { NotificationService } from '@svp-services';
 import { NavigationUtility } from '../navigation.utility';
-import { Result } from '../../../../models/src/lib/api-response-models/Result';
+import { Result } from '@svp-models';
 
 @Injectable({
   providedIn: 'root',

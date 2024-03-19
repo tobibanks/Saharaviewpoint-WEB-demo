@@ -1,31 +1,137 @@
-<div class="w-ful h-full bg-white pl-10 pt-5 dark:bg-night-700">
-  <div class="flex space-x-12 items-center">
-    <svp-status-card [status]="'Requested'" />
+<div class="w-full h-full bg-gray-100 py-5 dark:bg-night-700 relative">
+  <div class="px-10">
+    <div class="flex space-x-12 items-center">
+      <svp-status-card [status]="'Requested'" />
+      
+      <div class="flex flex-col space-y-1">
+        <p svp-text>Project created</p>
+        <h1 svp-subHeader>16/05/2023</h1>
+      </div>
+      
+      <div class="flex flex-col space-y-1">
+        <p svp-text>Project created</p>
+        <h1 svp-subHeader>16/05/2023</h1>
+      </div>
     
-    <div class="flex flex-col space-y-1">
-      <p svp-text>Project created</p>
-      <h1 svp-subHeader>16/05/2023</h1>
-    </div>
-    
-    <div class="flex flex-col space-y-1">
-      <p svp-text>Project created</p>
-      <h1 svp-subHeader>16/05/2023</h1>
-    </div>
-  
-    <div class="flex flex-col space-y-1">
-      <p svp-text>Project Manager</p>
-      <h1 svp-subHeader>Agba Baller</h1>
+      <div class="flex flex-col space-y-1">
+        <p svp-text>Project Manager</p>
+        <h1 svp-subHeader>Agba Baller</h1>
+      </div>
+
+      <div class="self-start grow flex justify-end -mr-6 cursor-pointer text-gray-800 dark:text-night-200 hover:text-gray-500 dark:hover:text-night-400">
+        <svg-icon src="assets/icons/appicons/cancel.svg" [svgClass]="'h-5 w-5'" (click)="close()"/>
+      </div>
     </div>
 
-    <div class="self-start grow flex justify-end pr-6">
-      <svg-icon src="assets/icons/appicons/cancel.svg" [svgClass]="'h-5 w-5 text-gray-800 dark:text-night-200'"/>
+    <div class="my-8 space-y-3">
+      <h1 svp-header>3 Storey Duplex</h1>
+      <p svp-text>
+        I need a 3 storey duplex sky scrapper, it should be taller than the tower of babel, we want to continue from where they stopped. I should be fully air-conditioned at all times, if tenant cannot deal with cold, they should pack out. No refund for occupants should they decide to move before the expiry of their rent.
+      </p>
+    </div>
+
+    <div class="bg-white p-8 rounded-xl">
+      <div class="grid grid-cols-2">
+        <div class="space-y-4">
+
+          <!-- TASKS -->
+          <div class="flex space-x-2 items-center">      
+            <svg-icon src="assets/icons/appicons/bar-chart.svg" [svgClass]="'h-5 w-5'"/>
+            <h1 svp-subHeader>Tasks</h1>
+          </div>
+          
+          <div class="flex space-x-2 items-center">      
+            <input type="checkbox" checked disabled>
+            <p svp-text>Site Clearing</p>
+          </div>
+
+          <div class="flex space-x-2 items-center">      
+            <input type="checkbox" disabled>
+            <p svp-text>Foundation</p>
+          </div>  
+
+          <div class="flex space-x-2 items-center">
+            <input type="checkbox" disabled>
+            <p svp-text>Roofing</p>
+          </div>
+
+          <div class="flex space-x-2 items-center">
+            <input type="checkbox" disabled>
+            <p svp-text>Finishing</p>
+          </div>
+
+          <!-- ATTACHMENTS -->
+          <div class="flex space-x-2 items-center pt-10">      
+            <svg-icon src="assets/icons/appicons/bar-chart.svg" [svgClass]="'h-5 w-5'"/>
+            <h1 svp-subHeader>Attachments</h1>
+          </div>
+
+          <div class="flex space-x-2 items-center">
+            <svg-icon src="assets/icons/appicons/chart.svg" [svgClass]="'h-5 w-5'"/>
+            <p svp-text>Project details doc</p>
+          </div>
+
+          <div class="flex space-x-2 items-center">
+            <svg-icon src="assets/icons/appicons/chart.svg" [svgClass]="'h-5 w-5'"/>
+            <p svp-text>Inventory</p>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <!-- RECENT ACTIVITIES -->
+          <div class="flex space-x-2 items-center ml-6">      
+            <h1 svp-subHeader>Recent Activities</h1>
+          </div>
+
+
+          <ol class="relative border-s border-gray-200 dark:border-gray-700">                  
+            <li class="ms-6">            
+                <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                  <svg-icon src="assets/icons/appicons/check-mark.svg" [svgClass]="'h-3 w-3 text-gray-900'"/>
+                </span>
+                <h1 svp-subHeader>Admin assigned task to James Sylvester</h1>
+                <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">January 13th, 2024</time>
+            </li>
+            <li class="mt-10 ms-6">
+              <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                <svg-icon src="assets/icons/appicons/check-mark.svg" [svgClass]="'h-3 w-3 text-gray-900'"/>
+              </span>
+              <h1 svp-subHeader>Task Created - Ground breaking</h1>
+              <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">February 13th, 2024</time>
+            </li>
+            <li class="mt-10 ms-6">
+              <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                <svg-icon src="assets/icons/appicons/check-mark.svg" [svgClass]="'h-3 w-3 text-gray-900'"/>
+              </span>
+              <h1 svp-subHeader>Ground breaking assigned to James Sylvester</h1>
+              <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">March 13th, 2024</time>
+            </li>
+          </ol>
+        </div>
+      </div>
     </div>
   </div>
+  
+  <div class="py-2 px-10 mb-5 fixed bottom-0 w-full">
+    <div class="mb-5">
+      <label svp-label>Assign to PM</label>
+      <ng-select class="w-96 mt-2"
+            [addTag]="true"
+            [multiple]="false"
+            [hideSelected]="true"
+            
+            [minTermLength]="2"
+            
+            placeholder="Select a PM"
+            typeToSearchText="Please enter 2 or more characters"
+            
+            formControlName="type">
+          </ng-select>
+    </div>
 
-  <div class="my-8 space-y-3">
-    <h1 svp-header>3 Storey Duplex</h1>
-    <p svp-text>
-      I need a 3 storey duplex sky scrapper, it should be taller than the tower of babel, we want to continue from where they stopped. I should be fully air-conditioned at all times, if tenant cannot deal with cold, they should pack out. No refund for occupants should they decide to move before the expiry of their rent.
-    </p>
+    <div class="space-x-10">
+      <button svp-primary>Approve Project</button>
+      <button svp-neutral>Reject Project</button>
+    </div>
   </div>
 </div>

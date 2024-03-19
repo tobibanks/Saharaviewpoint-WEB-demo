@@ -7,8 +7,5 @@ import { RouterOutlet } from '@angular/router';
     standalone: true,
     imports: [RouterOutlet],
 })
-export class ProjectComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
+export class ProjectComponent {
 }

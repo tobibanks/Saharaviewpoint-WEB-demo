@@ -5,7 +5,7 @@ import { ResponsiveHelperComponent } from '@svp-components';
 import { ThemeService } from '@svp-services';
 import topbar from 'topbar';
 import { NxDropdownModule } from '@svp-directives';
-import { environment } from '../environments/environment';
+import { environment } from '../../../../libs/shared/environments/environment';
 
 @Component({
   selector: 'app-root',
